@@ -1,6 +1,17 @@
+'use client';
+
+import { Button } from "@/ui/button";
+
 export default function Home() {
   return (
-    <main id="main-content" className="flex flex-1 items-center justify-center p-3 flex-col gap-10">
+    <main id="main-content" className="flex flex-1 items-center justify-center p-3 flex-col gap-10 ">
+      <Button 
+        className="text-white px-4 py-2 rounded-md hover:bg-(--color-primary-hover)"
+        isLoading={true}
+        onClick={() => alert('Connexion réussie')}
+      >
+          Connexion
+      </Button>
       <h1 className="text-5xl font-bold text-orange-500 animate-bounce">
         Portfolio A11Y
       </h1>
