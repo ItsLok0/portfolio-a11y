@@ -4,20 +4,41 @@ import { Button } from "@/ui/button";
 
 export default function Home() {
   return (
-    <main id="main-content" className="flex flex-1 items-center justify-center p-3 flex-col gap-10 ">
-      <Button 
-        className="text-white px-4 py-2 rounded-md hover:bg-(--color-primary-hover)"
-        isLoading={true}
-        onClick={() => alert('Connexion réussie')}
-      >
-          Connexion
-      </Button>
-      <h1 className="text-5xl font-bold text-orange-500 animate-bounce">
+  <main id="main-content" className="flex flex-1 items-center justify-center p-3 flex-col gap-10 focus-visible:shadow-none!" tabIndex={-1}>
+      <h1 className="text-5xl font-bold text-text-danger">
         Portfolio A11Y
       </h1>
-      <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-        Btn main
-      </button>
+      <h2 className="text-text-primary text-4xl font-bold">Exemple bouton</h2>
+      <div className="exemple-btn flex justify-around flex-wrap gap-4">
+        <Button
+          size="lg"
+          fullWidth={false}
+          aria-label="Exemple de bouton principal large"
+        >
+            Btn primary large
+        </Button>
+        <Button
+          variant="secondary"
+          aria-label="Exemple de bouton secondaire moyen"
+        >
+            Btn secondary medium
+        </Button>
+        <Button
+          variant="danger"
+          size="sm"
+          disabled
+          aria-label="Exemple de bouton danger petit désactivé"
+        >
+            Btn danger small disabled
+        </Button>
+        <Button
+          variant="success"
+          fullWidth={true}
+          aria-label="Exemple de bouton success plein largeur"
+        >
+            Btn success full width
+        </Button>
+      </div>
     </main>
   );
 }

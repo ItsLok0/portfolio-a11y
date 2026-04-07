@@ -21,14 +21,9 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={`${open_sans.className} antialiased flex min-h-screen h-auto flex-col`}>
-        <div className="skipLink">
-          { <SkipLink /> }
-          <p className="text-sm text-gray-400">Skip Link ici en tant que première option de navigation</p>
-        </div>
+        { <SkipLink /> }
         <header>
-          <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-            Btn header
-          </button>
+          <p className="w-full flex justify-center font-bold">Header content</p>
         </header>
         { children }
       </body>
