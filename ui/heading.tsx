@@ -26,11 +26,12 @@ const Heading = <T extends React.ElementType = 'h1'>({
     ...props
 }: HeadingProps<T>) => {
     const HeadingComponent = as as React.ElementType;
+    level = level || (Number(as?.valueOf().toString().substring(1))) as HeadingLevel;
 
     return (
         <HeadingComponent   
             className={cn(
-                levelStyles[level || 1],
+                levelStyles[level],
                 className
             )}
             {...props}

@@ -9,7 +9,7 @@ export default function Home() {
       <Heading as="h1" level={1}>
         Portfolio A11Y
       </Heading>
-      <Heading as="h2" level={2}>
+      <Heading as="h2">
         Exemple bouton
       </Heading>
       <div className="exemple-btn flex justify-around flex-wrap gap-4">
