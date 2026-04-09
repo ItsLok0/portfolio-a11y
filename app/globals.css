@@ -53,19 +53,51 @@
   --radius-lg: 12px;
 }
 
-:root {
-  --focus-ring: 0 0 0 3px var(--color-bg-surface), 0 0 0 5px var(--color-primary);
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  :root {
+    --focus-ring: 0 0 0 3px var(--color-bg-surface), 0 0 0 5px var(--color-primary);
+  }
+  
+  body {
+    background-color: var(--color-bg-page);
+    color: var(--color-text-primary);
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+
+  .sr-only-focusable:focus,
+  .sr-only-focusable:focus-visible {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
 }
 
 @layer utilities {
   .focus-ring {
     box-shadow: var(--focus-ring);
   }
-}
-
-:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -75,25 +107,4 @@
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
   }
-}
-
-.sr-only-focusable:focus,
-.sr-only-focusable:focus-visible {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0.5rem 1rem;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-}
-
-body {
-  background: var(--color-bg-page);
-  color: var(--color-text-primary);
-}
-
-button:hover {
-  cursor: pointer;
 }

@@ -24,7 +24,6 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 // Création des styles de chaque variante de bouton
-
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
     'bg-primary text-primary-fg border border-primary ' +

@@ -1,14 +1,17 @@
 'use client';
 
 import { Button } from "@/ui/button";
+import Heading from "@/ui/heading";
 
 export default function Home() {
   return (
   <main id="main-content" className="flex flex-1 items-center justify-center p-3 flex-col gap-10 focus-visible:shadow-none!" tabIndex={-1}>
-      <h1 className="text-5xl font-bold text-text-danger">
+      <Heading as="h1" level={1}>
         Portfolio A11Y
-      </h1>
-      <h2 className="text-text-primary text-4xl font-bold">Exemple bouton</h2>
+      </Heading>
+      <Heading as="h2" level={2}>
+        Exemple bouton
+      </Heading>
       <div className="exemple-btn flex justify-around flex-wrap gap-4">
         <Button
           size="lg"
