@@ -1,17 +1,33 @@
 'use client';
 
 import { Button } from "@/ui/button";
-import Heading from "@/ui/heading";
+import { Heading } from "@/ui/heading";
+import { Text } from "@/ui/text";
 
 export default function Home() {
   return (
   <main id="main-content" className="flex flex-1 items-center justify-center p-3 flex-col gap-10 focus-visible:shadow-none!" tabIndex={-1}>
-      <Heading as="h1" level={1}>
-        Portfolio A11Y
-      </Heading>
-      <Heading as="h2">
-        Exemple bouton
-      </Heading>
+      <div className="flex flex-1 items-center justify-center p-3 flex-col gap-10">
+        <Heading as="h1">Accessibilité Numérique</Heading>
+      
+        <Heading as="h2" level={3}>Sous-section de page</Heading>
+
+        <Text variant="body">
+          Paragraphe body
+        </Text>
+
+        <Text variant="lead">
+          Un paragraphe lead
+        </Text>
+
+        <Text variant="code" as="code">Text code</Text>
+
+        <Text variant="caption" as="figcaption">Figcaption</Text>
+
+        <Text variant="small" className="italic">
+          Small : avril 2026
+        </Text>
+      </div>
       <div className="exemple-btn flex justify-around flex-wrap gap-4">
         <Button
           size="lg"

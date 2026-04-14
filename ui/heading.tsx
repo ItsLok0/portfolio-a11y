@@ -1,12 +1,14 @@
 import { cn } from '@/lib/utils';
+import { forwardRef } from 'react';
 
-export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
+type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
-type HeadingProps<T extends React.ElementType> = {
+export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
     children: React.ReactNode;
-    as?: T;
+    as?: HeadingTag;
     level?: HeadingLevel;
-} & React.ComponentPropsWithoutRef<T>;
+}
 
 // Création des styles de chaque level de heading
 const levelStyles: Record<HeadingLevel, string> = {
@@ -18,27 +20,32 @@ const levelStyles: Record<HeadingLevel, string> = {
     6: 'text-base font-semibold tracking-tight',
 };
 
-const Heading = <T extends React.ElementType = 'h1'>({
-    children,
-    as,
-    level,
-    className,
-    ...props
-}: HeadingProps<T>) => {
-    const HeadingComponent = as as React.ElementType;
-    level = level || (Number(as?.valueOf().toString().substring(1))) as HeadingLevel;
+export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
+    (
+        {
+            children,
+            as = 'h2',
+            level,
+            className,
+            ...props
+        }, ref
+    ) => {
+        const HeadingComponent = as;
+        const visualLevel = level ?? (Number(as[1]) as HeadingLevel);
 
-    return (
-        <HeadingComponent   
-            className={cn(
-                levelStyles[level],
-                className
-            )}
-            {...props}
-        >
-            {children}
-        </HeadingComponent>
-    );
-};
+        return (
+            <HeadingComponent
+                ref={ref}
+                className={cn(
+                    levelStyles[visualLevel],
+                    className
+                )}
+                {...props}
+            >
+                {children}
+            </HeadingComponent>
+        );
+    }
+);
 
-export default Heading;
+Heading.displayName = 'Heading';
