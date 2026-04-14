@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { forwardRef, ButtonHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 
 export type ButtonVariant =
   | 'primary'
@@ -19,12 +19,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     isLoading?: boolean;
     variant?: ButtonVariant;
     size?: ButtonSize;
-    iconOnly?: boolean;
     fullWidth?: boolean;
 }
 
 // Création des styles de chaque variante de bouton
-
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
     'bg-primary text-primary-fg border border-primary ' +
@@ -69,28 +67,21 @@ const sizeStyles: Record<ButtonSize, string> = {
     md: 'h-10 px-4 text-base gap-2',
     lg: 'h-12 px-6 text-lg gap-2.5',
 }
- 
-const iconOnlySizeStyles: Record<ButtonSize, string> = {
-  sm: 'h-8 w-8',
-  md: 'h-10 w-10',
-  lg: 'h-12 w-12',
-}
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-    (
-        {
-            children,
-            className,
-            isLoading,
-            disabled,
-            variant='primary',
-            size='md',
-            iconOnly=false,
-            fullWidth=false,
-            'aria-label': ariaLabel,
-            ...props
-        }, ref
-    ) => {
+  (
+    {
+        children,
+        className,
+        isLoading,
+        disabled,
+        variant='primary',
+        size='md',
+        fullWidth=false,
+        'aria-label': ariaLabel,
+        ...props
+    }, ref
+  ) => {
     const isDisabled = disabled || isLoading;
 
     return (
@@ -107,8 +98,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 'focus-visible:outline-none focus-visible:shadow-(--focus-ring)',
                 'active:scale-[0.99]',
                 variantStyles[variant],
-                iconOnly ? iconOnlySizeStyles[size] : sizeStyles[size],
-                iconOnly && 'p-0',
+                sizeStyles[size],
                 fullWidth && 'w-full',
                 className,
             )}
@@ -119,6 +109,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             </span>
         </button>
     );
-});
+  }
+);
 
 Button.displayName = 'Button';
