@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/globals.css";
-import SkipLink from "@/component/layout/skip-link";
-import { open_sans } from "@/component/ui/fonts";
+import SkipLink from "@/app/ui/layout/skip-link";
+import { open_sans } from "@/app/ui/fonts";
 
 export const metadata: Metadata = {
   title: "Portfolio A11y",
@@ -20,7 +20,9 @@ export default function RootLayout({
         <header>
           <p className="w-full flex justify-center font-bold">Header content</p>
         </header>
-        { children }
+        <main id="main-content" tabIndex={-1}>
+          { children }
+        </main>
       </body>
     </html>
   );

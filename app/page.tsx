@@ -1,12 +1,12 @@
-import { Button } from "@/component/ui/button";
-import { Heading } from "@/component/ui/heading";
-import { Text } from "@/component/ui/text";
-import { Input } from "@/component/ui/input";
+import { Button } from "@/app/ui/components/button";
+import { Heading } from "@/app/ui/components/heading";
+import { Text } from "@/app/ui/components/text";
+import { InputComponent } from "@/app/ui/components/input";
 
 export default function Home() {
   return (
-  <main id="main-content" className="flex flex-1 items-center justify-center p-3 flex-col gap-10 focus-visible:shadow-none!" tabIndex={-1}>
-      <div className="flex flex-1 items-center justify-center p-3 flex-col gap-10">
+  <div className="flex flex-1 items-center justify-center p-3 flex-col gap-10 focus-visible:shadow-none!">
+      <div className="flex items-center justify-center p-3 flex-col gap-10">
         <Heading as="h1">Accessibilité Numérique</Heading>
       
         <Heading as="h2" level={3}>Sous-section de page</Heading>
@@ -28,7 +28,7 @@ export default function Home() {
         </Text>
       </div>
       <div className="inputs">
-        <Input label="test" type="text" defaultValue="bonjour" />
+        <InputComponent label="test" type="text" defaultValue="bonjour" />
       </div>
       <div className="exemple-btn flex justify-around flex-wrap gap-4">
         <Button
@@ -60,6 +60,6 @@ export default function Home() {
             Btn success full width
         </Button>
       </div>
-    </main>
+    </div>
   );
 }

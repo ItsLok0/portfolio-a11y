@@ -13,9 +13,9 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 }
 
 const sizeStyles: Record<InputSize, string> = {
-    sm: 'h-8  px-2.5 text-sm  gap-1.5',
-    md: 'h-10 px-3   text-base gap-2',
-    lg: 'h-12 px-4   text-lg   gap-2.5',
+    sm: 'h-8  px-2.5 text-sm gap-1.5',
+    md: 'h-10 px-3 text-base gap-2',
+    lg: 'h-12 px-4 text-lg gap-2.5',
 };
 
 const labelSizeStyles: Record<InputSize, string> = {
@@ -30,7 +30,41 @@ const helperSizeStyles: Record<InputSize, string> = {
     lg: 'text-sm',
 };
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
+const baseInputStyles = [
+    'w-full rounded-[--radius-md] border',
+    'bg-bg-surface',
+    'font-sans transition-colors duration-200',
+    'border-border-default',
+    'text-text-primary',
+    'placeholder:text-text-muted',
+    'focus-visible:outline-none',
+    'focus-visible:shadow-[var(--focus-ring)]',
+    'disabled:cursor-not-allowed',
+    'disabled:opacity-50',
+    'disabled:bg-ghost-hover',
+].join(' ');
+
+const errorInputStyles = [
+    'border-danger',
+    'focus-visible:shadow-[--focus-ring-danger]',
+].join(' ');
+
+const baseLabelStyles = [
+    'leading-none select-none',
+    'text-text-primary',
+].join(' ');
+
+const descriptionStyles = [
+    'leading-[1.6]',
+    'text-text-muted',
+].join(' ');
+
+const errorMessageStyles = [
+    'font-medium leading-[1.6]',
+    'text-danger',
+].join(' ');
+
+export const InputComponent = forwardRef<HTMLInputElement, InputProps>(
     (
         {
             id,
@@ -43,8 +77,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         }, ref
     ) => {
         const inputId = id ?? useId();
-        const errorId    = `${inputId}-error`;
-        const descId     = `${inputId}-desc`;
+        const errorId = `${inputId}-error`;
+        const descId = `${inputId}-desc`;
         const describedBy = error ? errorId : description ? descId : undefined;
 
         return (
@@ -52,7 +86,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 <label
                     htmlFor={inputId}
                     className={cn(
-                        'text-text-primary leading-none select-none',
+                        baseLabelStyles,
                         labelSizeStyles[size]
                     )}
                 >
@@ -62,30 +96,37 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                     ref={ref}
                     id={inputId}
                     className={cn(
-                        'w-full rounded-md border bg-[var(--color-bg-surface)]',
-                        'font-sans transition-colors duration-200',
-                        'border-[var(--color-border-default)]',
-                        'text-[var(--color-text-primary)]',
-                        'placeholder:text-[var(--color-text-muted)]',
-                        'focus-visible:outline-none focus-visible:shadow-[var(--focus-ring)]',
-                        'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-[var(--color-ghost-hover)]',
+                        baseInputStyles,
                         sizeStyles[size],
-                        "flex h-10 w-full rounded-md border",
-                        error && "border-red-500 focus-visible:ring-red-500", // Style d'erreur
+                        error && errorInputStyles,
                         className
                     )}
                     aria-describedby={error ? `${inputId}-error` : description ? `${inputId}-desc` : undefined}
                     aria-invalid={!!error}
                     {...props}
                 />
-                {/* Message d'aide ou d'erreur */}
+
                 {description && !error && (
-                    <p id={`${inputId}-desc`} className="text-xs text-slate-500">
+                    <p
+                        id={descId}
+                        className={cn(
+                            descriptionStyles,
+                            helperSizeStyles[size]
+                        )}
+                    >
                         {description}
                     </p>
                 )}
+
                 {error && (
-                    <p id={`${inputId}-error`} className="text-xs font-medium text-red-500">
+                    <p 
+                        id={errorId}
+                        className={cn(
+                            errorMessageStyles,
+                            helperSizeStyles[size]
+                        )}
+                        aria-live="polite"
+                    >
                         {error}
                     </p>
                 )}
@@ -94,4 +135,4 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     }
 );
 
-Input.displayName = 'Input';
+InputComponent.displayName = 'InputComponent';
