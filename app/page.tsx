@@ -1,7 +1,6 @@
 import { Button } from "@/app/ui/components/button";
 import { Heading } from "@/app/ui/components/heading";
 import { Text } from "@/app/ui/components/text";
-import { InputComponent } from "@/app/ui/components/input";
 
 export default function Home() {
   return (
@@ -26,9 +25,6 @@ export default function Home() {
         <Text variant="small" className="italic">
           Small : avril 2026
         </Text>
-      </div>
-      <div className="inputs">
-        <InputComponent label="test" type="text" defaultValue="bonjour" />
       </div>
       <div className="exemple-btn flex justify-around flex-wrap gap-4">
         <Button

@@ -2,6 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import { forwardRef, useId } from 'react';
+import { Text } from '@/app/ui/components/text';
 
 type InputSize = 'sm' | 'md' | 'lg';
 
@@ -31,40 +32,16 @@ const helperSizeStyles: Record<InputSize, string> = {
 };
 
 const baseInputStyles = [
-    'w-full rounded-[--radius-md] border',
-    'bg-bg-surface',
+    'w-full border',
     'font-sans transition-colors duration-200',
-    'border-border-default',
     'text-text-primary',
     'placeholder:text-text-muted',
-    'focus-visible:outline-none',
-    'focus-visible:shadow-[var(--focus-ring)]',
     'disabled:cursor-not-allowed',
     'disabled:opacity-50',
     'disabled:bg-ghost-hover',
 ].join(' ');
 
-const errorInputStyles = [
-    'border-danger',
-    'focus-visible:shadow-[--focus-ring-danger]',
-].join(' ');
-
-const baseLabelStyles = [
-    'leading-none select-none',
-    'text-text-primary',
-].join(' ');
-
-const descriptionStyles = [
-    'leading-[1.6]',
-    'text-text-muted',
-].join(' ');
-
-const errorMessageStyles = [
-    'font-medium leading-[1.6]',
-    'text-danger',
-].join(' ');
-
-export const InputComponent = forwardRef<HTMLInputElement, InputProps>(
+export const Input = forwardRef<HTMLInputElement, InputProps>(
     (
         {
             id,
@@ -73,6 +50,7 @@ export const InputComponent = forwardRef<HTMLInputElement, InputProps>(
             error,
             description,
             size = 'md',
+            required,
             ...props
         }, ref
     ) => {
@@ -83,56 +61,60 @@ export const InputComponent = forwardRef<HTMLInputElement, InputProps>(
 
         return (
             <div className="w-full flex flex-col gap-1.5">
-                <label
+                <Text
+                    as='label'
                     htmlFor={inputId}
                     className={cn(
-                        baseLabelStyles,
+                        'select-none',
                         labelSizeStyles[size]
                     )}
                 >
                     {label}
-                </label>
+                    {required && <Text as='span' aria-hidden='true'>*</Text>}
+                </Text>
                 <input
                     ref={ref}
                     id={inputId}
                     className={cn(
                         baseInputStyles,
                         sizeStyles[size],
-                        error && errorInputStyles,
+                        error && 'error border-danger text-danger',
                         className
                     )}
-                    aria-describedby={error ? `${inputId}-error` : description ? `${inputId}-desc` : undefined}
+                    aria-describedby={describedBy}
                     aria-invalid={!!error}
+                    required={required}
                     {...props}
                 />
 
                 {description && !error && (
-                    <p
-                        id={descId}
+                    <Text
+                        as='p'
                         className={cn(
-                            descriptionStyles,
+                            'text-text-muted ',
                             helperSizeStyles[size]
                         )}
                     >
                         {description}
-                    </p>
+                    </Text>
                 )}
 
                 {error && (
-                    <p 
+                    <Text
+                        as='p'
                         id={errorId}
                         className={cn(
-                            errorMessageStyles,
+                            'text-danger',
                             helperSizeStyles[size]
                         )}
                         aria-live="polite"
                     >
                         {error}
-                    </p>
+                    </Text>
                 )}
             </div>
         )
     }
 );
 
-InputComponent.displayName = 'InputComponent';
+Input.displayName = 'Input';

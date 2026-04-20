@@ -1,38 +1,25 @@
-'use client';
+import { Heading } from '@/app/ui/components/heading';
+import { Input } from '@/app/ui/components/input';
+import { Metadata } from 'next';
 
-import { useState } from 'react';   
-import { InputComponent } from '@/app/ui/components/input';
-
+export const metadata: Metadata = {
+    title: 'Inputs accessibles',
+    description: 'Découvrez différents exemples d\'inputs accessibles et bien conçus pour améliorer l\'expérience utilisateur.',
+};
 export default function Page() {
-    const [email, setEmail] = useState('');
-    const [error, setError] = useState('');
-
-    const validate = (value: string) => {
-        if (!value) return setError('Ce champ est obligatoire');
-        if (!value.includes('@')) return setError('Adresse e-mail invalide');
-        setError('');
-    };
-
     return (
-        <div className="p-8 max-w-md mx-auto flex flex-col gap-6">
-            <InputComponent
-                label="Adresse e-mail"
-                placeholder="nom@exemple.fr"
-                description="Exemple d'une description"
-                size="md"
-                value={email}
-                onChange={(e) => { setEmail(e.target.value); validate(e.target.value); }}
-                onBlur={(e) => validate(e.target.value)}
-                error={error}
+        <div className="p-8 mx-auto flex flex-col gap-6">
+            <Heading as="h1" className='mb-20'>
+                Exemples d'Inputs individuels
+            </Heading>
+            <Input
+                label="Description + placeholder"
+                placeholder='placeholder'
+                description="Description du champ"
+                required
             />
-
-            <InputComponent label="Taille sm" size="sm" placeholder="Petit" />
-            <InputComponent label="Taille md" size="md" placeholder="Moyen" />
-            <InputComponent label="Taille lg" size="lg" placeholder="Grand" />
-
-            <InputComponent label="Avec description" description="Texte d'aide visible." />
-            <InputComponent label="Avec erreur" error="Ce champ est obligatoire." />
-            <InputComponent label="Désactivé" disabled value="Valeur non modifiable" onChange={() => {}} />
+            <Input label="En erreur" error="Ce champ est obligatoire" />
+            <Input label="Désactivé" disabled value="Valeur non modifiable" />
         </div>
     );
 }
