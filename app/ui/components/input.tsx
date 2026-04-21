@@ -6,11 +6,18 @@ import { Text } from '@/app/ui/components/text';
 
 type InputSize = 'sm' | 'md' | 'lg';
 
-export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export type InputType = Exclude<
+    React.HTMLInputTypeAttribute,
+    'checkbox' | 'radio' | 'file' | 'color' | 'range' | 'image' | 'hidden'
+>;
+
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> {
     label: string;
-    error?: string;
+    errorMessage?: string;
+    error?: boolean;
     description?: string;
     size?: InputSize;
+    type?: InputType;
 }
 
 const sizeStyles: Record<InputSize, string> = {
@@ -32,9 +39,10 @@ const helperSizeStyles: Record<InputSize, string> = {
 };
 
 const baseInputStyles = [
-    'w-full border',
-    'font-sans transition-colors duration-200',
+    'w-full border rounded-md',
     'text-text-primary',
+    'bg-bg-surface',
+    'border-border-subtle',
     'placeholder:text-text-muted',
     'disabled:cursor-not-allowed',
     'disabled:opacity-50',
@@ -47,34 +55,43 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             id,
             label,
             className,
-            error,
+            error = false,
+            errorMessage = 'Ce champ est obligatoire',
             description,
             size = 'md',
             required,
             ...props
         }, ref
     ) => {
-        const inputId = id ?? useId();
+        const generatedId = useId();
+        const inputId = id ?? generatedId;
         const errorId = `${inputId}-error`;
         const descId = `${inputId}-desc`;
-        const describedBy = error ? errorId : description ? descId : undefined;
+        const describedBy = [
+            description ? descId : null,
+            error ? errorId : null,
+        ]
+        .filter(Boolean)
+        .join(' ') || undefined;
 
         return (
             <div className="w-full flex flex-col gap-1.5">
                 <Text
                     as='label'
                     htmlFor={inputId}
-                    className={cn(
-                        'select-none',
-                        labelSizeStyles[size]
-                    )}
+                    className={cn('select-none', labelSizeStyles[size])}
                 >
                     {label}
-                    {required && <Text as='span' aria-hidden='true'>*</Text>}
+                    {required && (
+                        <Text as='span' aria-hidden='true'>
+                            *
+                        </Text>
+                    )}
                 </Text>
                 <input
                     ref={ref}
                     id={inputId}
+                    name={props.name ?? inputId}
                     className={cn(
                         baseInputStyles,
                         sizeStyles[size],
@@ -87,33 +104,29 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                     {...props}
                 />
 
-                {description && !error && (
-                    <Text
-                        as='p'
-                        className={cn(
-                            'text-text-muted ',
-                            helperSizeStyles[size]
-                        )}
-                    >
-                        {description}
-                    </Text>
-                )}
-
-                {error && (
-                    <Text
-                        as='p'
-                        id={errorId}
-                        className={cn(
-                            'text-danger',
-                            helperSizeStyles[size]
-                        )}
-                        aria-live="polite"
-                    >
-                        {error}
-                    </Text>
-                )}
+                <div aria-live="polite" aria-atomic="true">
+                    {description && (
+                        <Text
+                            as="p"
+                            id={descId}
+                            className={cn('text-text-muted', helperSizeStyles[size], error && 'sr-only')}
+                        >
+                            {description}
+                        </Text>
+                    )}
+            
+                    {error && (
+                        <Text
+                            as="p"
+                            id={errorId}
+                            className={cn('text-danger', helperSizeStyles[size])}
+                        >
+                            {errorMessage}
+                        </Text>
+                    )}
+                </div>
             </div>
-        )
+        );
     }
 );
 

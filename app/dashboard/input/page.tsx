@@ -1,6 +1,7 @@
 import { Heading } from '@/app/ui/components/heading';
 import { Input } from '@/app/ui/components/input';
 import { Metadata } from 'next';
+import Link from 'next/dist/client/link';
 
 export const metadata: Metadata = {
     title: 'Inputs accessibles',
@@ -8,18 +9,55 @@ export const metadata: Metadata = {
 };
 export default function Page() {
     return (
-        <div className="p-8 mx-auto flex flex-col gap-6">
+        <div className="flex flex-1 items-center justify-center p-3 flex-col gap-10 focus-visible:shadow-none!">
             <Heading as="h1" className='mb-20'>
                 Exemples d'Inputs individuels
             </Heading>
-            <Input
-                label="Description + placeholder"
-                placeholder='placeholder'
-                description="Description du champ"
-                required
-            />
-            <Input label="En erreur" error="Ce champ est obligatoire" />
-            <Input label="Désactivé" disabled value="Valeur non modifiable" />
+            <div className="w-full flex flex-col gap-8">
+                <Input
+                    type='email'
+                    autoComplete='email'
+                    label="Input de base"
+                    placeholder="Entrez du texte ici"
+                />
+                <Input
+                    type='number'
+                    label="Input avec placeholder et description"
+                    placeholder="Entrez un nombre"
+                    description="Description de l'input"
+                />
+                <Input
+                    type='url'
+                    label="Input requis"
+                    placeholder="Champ requis"
+                    required
+                />
+                <Input
+                    type='date'
+                    label="Input avec erreur"
+                    error={true}
+                />
+                <Input
+                    label="Input avec erreur et message d'erreur"
+                    placeholder="Champ avec erreur et message"
+                    error={true}
+                    errorMessage="Message d'erreur personnalisé"
+                />
+                <Input
+                    label="Input désactivé"
+                    placeholder="Champ désactivé"
+                    disabled
+                />
+                <Input label="Input de recherche" type="search" />
+            </div>
+            <div className="formTest">
+                <Link 
+                    href="/dashboard/input/form"
+                    className='mt-4 p-1 rounded-md text-sm text-text-primary underline'
+                >
+                    Exemple formulaire avec validation dynamique
+                </Link>
+            </div>
         </div>
     );
 }
