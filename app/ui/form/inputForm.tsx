@@ -5,7 +5,7 @@ import { Input } from '@/app/ui/components/input';
 import { Button } from '@/app/ui/components/button';
 import { Heading } from '../components/heading';
 import { Text } from '../components/text';
-import checkEmail, { type ActionState } from '@/app/actions';
+import checkEmail, { type ActionStateEmail } from '@/app/actions';
 
 const initialState = {
   message: '',

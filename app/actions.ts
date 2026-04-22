@@ -8,7 +8,7 @@ const emailSchema = z.object({
     .min(1, 'L\'adresse email est obligatoire.'),
 });
 
-export type ActionState = {
+export type ActionStateEmail = {
   message: string;
   success?: boolean;
   errors?: {
@@ -17,9 +17,9 @@ export type ActionState = {
 };
 
 export default async function checkEmail(
-  _prevState: ActionState,
+  _prevState: ActionStateEmail,
   formData: FormData
-): Promise<ActionState> {
+): Promise<ActionStateEmail> {
   const rawEmail = formData.get('email');
 
   const result = emailSchema.safeParse({ email: rawEmail });

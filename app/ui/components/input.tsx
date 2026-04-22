@@ -119,6 +119,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                         <Text
                             as="p"
                             id={errorId}
+                            role='alert'
                             className={cn('text-danger', helperSizeStyles[size])}
                         >
                             {errorMessage}

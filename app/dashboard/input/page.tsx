@@ -45,10 +45,14 @@ export default function Page() {
                 />
                 <Input
                     label="Input désactivé"
-                    placeholder="Champ désactivé"
+                    value="Désactivé"
                     disabled
                 />
-                <Input label="Input de recherche" type="search" />
+                <Input
+                    label="Input en lecture seule"
+                    value="Reader only"
+                    readOnly
+                />
             </div>
             <div className="formTest">
                 <Link 
