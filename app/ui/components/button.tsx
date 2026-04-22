@@ -26,39 +26,39 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
     'bg-primary text-primary-fg border border-primary ' +
-    'hover:bg-primary-hover hover:border-primary-hover ' +
-    'active:bg-primary-active',
+    'not-disabled:hover:bg-primary-hover not-disabled:hover:border-primary-hover ' +
+    'not-disabled:active:bg-primary-active',
  
   secondary:
     'bg-secondary text-secondary-fg border border-secondary ' +
-    'hover:bg-secondary-hover hover:border-secondary-hover ' +
-    'active:bg-secondary-active',
+    'not-disabled:hover:bg-secondary-hover not-disabled:hover:border-secondary-hover ' +
+    'not-disabled:active:bg-secondary-active',
  
   danger:
     'bg-danger text-danger-fg border border-danger ' +
-    'hover:bg-danger-hover hover:border-danger-hover ' +
-    'active:bg-danger-active',
+    'not-disabled:hover:bg-danger-hover not-disabled:hover:border-danger-hover ' +
+    'not-disabled:active:bg-danger-active',
  
   success:
     'bg-success text-success-fg border border-success ' +
-    'hover:bg-success-hover hover:border-success-hover ' +
-    'active:bg-success-active',
+    'not-disabled:hover:bg-success-hover not-disabled:hover:border-success-hover ' +
+    'not-disabled:active:bg-success-active',
  
   ghost:
     'bg-transparent text-text-primary border border-transparent ' +
-    'hover:bg-ghost-hover ' +
-    'active:bg-ghost-active',
+    'not-disabled:hover:bg-ghost-hover ' +
+    'not-disabled:active:bg-ghost-active',
  
   outline:
     'bg-transparent text-primary border border-primary ' +
-    'hover:bg-primary-subtle ' +
-    'active:bg-primary-subtle',
+    'not-disabled:hover:bg-primary-subtle ' +
+    'not-disabled:active:bg-primary-subtle',
  
   link:
     'bg-transparent text-text-link border-none ' +
     'underline underline-offset-4 ' +
-    'hover:text-text-link-hover ' +
-    'active:opacity-80 ' +
+    'not-disabled:hover:text-text-link-hover ' +
+    'not-disabled:active:opacity-80 ' +
     'h-auto! px-0!',
 }
 
@@ -94,9 +94,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 'relative inline-flex items-center justify-center',
                 'font-medium leading-none rounded-md',
                 'select-none whitespace-nowrap',
-                'disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed',
+                'disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:none',
                 'focus-visible:outline-none focus-visible:shadow-(--focus-ring)',
-                'active:scale-[0.99]',
+                'not-disabled:active:scale-[0.99]',
                 variantStyles[variant],
                 sizeStyles[size],
                 fullWidth && 'w-full',

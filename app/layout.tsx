@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "@/app/globals.css";
-import SkipLink from "@/app/ui/layout/skip-link";
+import SkipLink from "@/app/layout/skip-link";
 import { open_sans } from "@/app/ui/fonts";
+import Header from "./layout/header";
 
 export const metadata: Metadata = {
   title: {
@@ -17,13 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
-      <body className={`${open_sans.className} antialiased flex flex-1 min-h-screen h-auto flex-col`}>
+    <html lang="fr" className="scroll-smooth">
+      <body className={`${open_sans.className} antialiased bg-bg-surface text-text-primary`}>
         { <SkipLink /> }
-        <header>
-          <p className="w-full flex justify-center font-bold">Header content</p>
-        </header>
-        <main id="main-content" tabIndex={-1}>
+        <Header />
+        <main id="main-content" tabIndex={-1} className="flex-1">
           { children }
         </main>
       </body>

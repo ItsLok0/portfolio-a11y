@@ -72,6 +72,10 @@
 
   button:hover {
     cursor: pointer;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 
   input, textarea {
@@ -82,6 +86,17 @@
     color: var(--color-text-primary);
     background-color: var(--color-bg-surface);
     transition: border-color 0.2s ease-in-out;
+  }
+  
+  input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box; /* Évite que le padding n'agrandisse l'élément */
+    width: 100%; /* Ou la largeur souhaitée */
+    max-width: 100%;
+    font-family: inherit;
+    font-size: 16px; /* Empêche le zoom auto sur iOS */
+    vertical-align: middle;
   }
 }
 
@@ -121,12 +136,17 @@
     &.error {
       box-shadow: var(--focus-ring-error);
     }
+    
   }
 
-  input:read-only, input:disabled, 
-  textarea:read-only, textarea:disabled {
+  input:read-only, Textarea:read-only {
     background-color: var(--color-ghost-hover);
-    opacity: .7 !important;
-    cursor: not-allowed;
+    cursor: default;
+  }
+
+  input:disabled, textarea:disabled {
+    background-color: #f0f0f0 !important;
+    color: #767676 !important;
+    opacity: .6 !important;
   }
 }
