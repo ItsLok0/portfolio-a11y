@@ -12,21 +12,23 @@
   --color-secondary:        #6B7280;
   --color-secondary-hover:  #4B5563;
   --color-secondary-active: #374151;
+  --color-secondary-subtle: #F3F4F6;
   --color-secondary-fg:     #FFFFFF;
  
   /* --- Danger --- */
-  --color-danger:           #DC2626;
-  --color-danger-hover:     #B91C1C;
-  --color-danger-active:    #991B1B;
+  --color-danger:           #B91C1C;
+  --color-danger-hover:     #991B1B;
+  --color-danger-active:    #7F1D1D;
   --color-danger-subtle:    #FEF2F2;
   --color-danger-fg:        #FFFFFF;
  
   /* --- Success --- */
-  --color-success:          #059669;
-  --color-success-hover:    #047857;
-  --color-success-active:   #065F46;
+  --color-success:          #065F46;
+  --color-success-hover:    #064E3B;
+  --color-success-active:   #022C22;
   --color-success-subtle:   #ECFDF5;
   --color-success-fg:       #FFFFFF;
+
  
   /* --- Ghost --- */
   --color-ghost-hover:      #F3F4F6;
@@ -35,25 +37,18 @@
   /* --- Backgrounds --- */
   --color-bg-page:          #F5F4F0;
   --color-bg-surface:       #FFFFFF;
- 
-  /* --- Textes --- */
-  --color-text-primary:     #111827;
-  --color-text-secondary:   #4B5563;
-  --color-text-muted:       #9CA3AF;
-  --color-text-link:        #3730A3;
-  --color-text-link-hover:  #312E81;
- 
-  /* --- Bordures --- */
-  --color-border-subtle:    #E5E7EB;
-  --color-border-default:   #D1D5DB;
- 
-  /* --- Radius custom --- */
+
+  /* --- Radius --- */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
 
-  /* --- Leading --- */
-  --leading-body: 1.6;
+  /* --- Texte --- */
+  --color-text-primary:     #111827;
+  --color-text-secondary:   #4B5563;
+  --color-text-muted:       #595959;
+  --color-text-link:        #3730A3;
+  --color-text-link-hover:  #312E81;
 }
 
 @layer base {
@@ -63,13 +58,13 @@
 
   :root {
     --focus-ring: 0 0 0 3px var(--color-bg-surface), 0 0 0 5px var(--color-primary);
+    --focus-ring-error: 0 0 0 3px var(--color-bg-surface), 0 0 0 5px var(--color-danger);
   }
-  
+
   body {
     background-color: var(--color-bg-page);
     color: var(--color-text-primary);
     margin: 0;
-    font-family: 'Inter', sans-serif;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -77,15 +72,52 @@
 
   button:hover {
     cursor: pointer;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 
-  :focus-visible {
-    outline: none;
+  input, textarea {
+    border: 1px solid var(--color-secondary);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font: inherit;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-surface);
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box; /* Évite que le padding n'agrandisse l'élément */
+    width: 100%; /* Ou la largeur souhaitée */
+    max-width: 100%;
+    font-family: inherit;
+    font-size: 16px; /* Empêche le zoom auto sur iOS */
+    vertical-align: middle;
+  }
+}
+
+@layer utilities {
+  .focus-ring {
     box-shadow: var(--focus-ring);
   }
 
-  .sr-only-focusable:focus,
-  .sr-only-focusable:focus-visible {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .sr-only:focus, .sr-only:focus-visible {
     position: static;
     width: auto;
     height: auto;
@@ -95,19 +127,26 @@
     clip: auto;
     white-space: normal;
   }
-}
 
-@layer utilities {
-  .focus-ring {
+  :focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
     box-shadow: var(--focus-ring);
-  }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
+    &.error {
+      box-shadow: var(--focus-ring-error);
+    }
+    
+  }
+
+  input:read-only, Textarea:read-only {
+    background-color: var(--color-ghost-hover);
+    cursor: default;
+  }
+
+  input:disabled, textarea:disabled {
+    background-color: #f0f0f0 !important;
+    color: #767676 !important;
+    opacity: .6 !important;
   }
 }

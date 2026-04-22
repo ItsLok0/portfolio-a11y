@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
 import "@/app/globals.css";
-import SkipLink from "@/component/layout/skip-link";
-
-const open_sans = Open_Sans  ({
-  subsets: ["latin"],
-  weight: '400',
-});
+import SkipLink from "@/app/layout/skip-link";
+import { open_sans } from "@/app/ui/fonts";
+import Header from "./layout/header";
 
 export const metadata: Metadata = {
-  title: "Portfolio A11y",
+  title: {
+      default: "Kore A11y",
+      template: "%s | Kore A11y",
+  },
   description: "Composants accessibles WCAG 2.2",
 };
 
@@ -19,13 +18,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
-      <body className={`${open_sans.className} antialiased flex min-h-screen h-auto flex-col`}>
+    <html lang="fr" className="scroll-smooth">
+      <body className={`${open_sans.className} antialiased bg-bg-surface text-text-primary`}>
         { <SkipLink /> }
-        <header>
-          <p className="w-full flex justify-center font-bold">Header content</p>
-        </header>
-        { children }
+        <Header />
+        <main id="main-content" tabIndex={-1} className="flex-1">
+          { children }
+        </main>
       </body>
     </html>
   );
