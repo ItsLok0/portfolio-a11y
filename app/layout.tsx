@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className="scroll-smooth">
-      <body className={`${open_sans.className} antialiased bg-bg-surface text-text-primary`}>
+      <body className={`${open_sans.className} antialiased bg-bg-page text-text-primary`}>
         { <SkipLink /> }
         <Header />
         <main id="main-content" tabIndex={-1} className="flex-1">

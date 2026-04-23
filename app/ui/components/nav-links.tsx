@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { Text } from '@/app/ui/components/text';
 
 const links = [
   { name: 'Home', href: '/' },
@@ -15,20 +16,28 @@ export default function NavLinks() {
     const pathname = usePathname();
  
     return (
-        <nav className="flex gap-4 p-4">
+        <nav className="flex gap-4 p-4 justify-center">
             { links.map((link) => {
                 return (
                     <Link
                         key={link.name}
                         href={link.href}
                         className={cn(
-                        'flex h-12 grow items-center justify-center gap-2 rounded-md bg-bg-surface p-3 text-sm font-medium hover:bg-primary/70 hover:text-white md:flex-none md:justify-start md:p-2 md:px-3',
+                        'group flex h-12 grow items-center justify-center gap-2 rounded-md bg-bg-surface border-2 border-primary/0 not-focus:border-primary/80 hover:border-primary/0 p-3 text-sm font-medium hover:bg-primary/80 focus:bg-primary/80 md:flex-none md:justify-start md:p-2 md:px-3',
                         {
-                            'bg-primary/70 text-white': pathname === link.href,
+                            'bg-primary/80 border-primary/0 not-focus:border-primary/0': pathname === link.href,
                         },
                         )}
                     >
-                        <p className="hidden md:block">{link.name}</p>
+                        <Text
+                            as='p'
+                            className={cn(  
+                                'group-hover:text-white group-focus:text-white', 
+                                pathname === link.href ? 'text-white' : 'text-text-primary'
+                            )}
+                        >
+                            {link.name}
+                        </Text>
                     </Link>
                 );
             })}
