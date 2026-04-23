@@ -91,7 +91,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             aria-busy={isLoading}
             aria-label={ariaLabel}
             className={cn(
-                'relative inline-flex items-center justify-center',
+                'inline-flex items-center justify-center',
                 'font-medium leading-none rounded-md',
                 'select-none whitespace-nowrap',
                 'disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:none',
