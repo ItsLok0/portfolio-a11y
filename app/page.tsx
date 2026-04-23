@@ -8,16 +8,22 @@ export default function HomePage() {
     return (
         <>
             {/* PREMIERE SECTION */}
-            <section className="py-20 px-6 border-b border-border-subtle">
+            <section className="py-20 px-6">
                 <div className="max-w-5xl mx-auto text-center flex flex-col items-center gap-6">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                        <span className="flex h-2 w-2" aria-hidden="true">
+                            <span className="inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                        </span>
+                        <Text variant="caption" className="font-bold">Phase 2 en cours : Bibliothèque d'atomes (UI Kit)</Text>
+                    </div>
                     <Heading as="h1" className="text-5xl md:text-6xl font-extrabold">
                         Kore <span className="text-primary">A11Y</span>
                     </Heading>
                     <Text variant="lead" className="max-w-2xl">
-                        Une bibliothèque de composants pensée pour le RGAA, offrant des éléments accessibles et conformes pour vos projets web.
+                        Une bibliothèque de composants pensée pour le RGAA.
                     </Text>
                     <div className="flex gap-4 mt-4">
-                        <Link href="https://github.com/ItsLok0/Kore-A11y" target="_blank" className="flex items-center gap-2 text-primary hover:underline">
+                        <Link href="https://github.com/ItsLok0/Kore-A11y" target="_blank" className="flex border-2 p-2 rounded-md items-center gap-2 text-primary hover:underline focus:underline">
                             Dépôt GitHub
                         </Link>
                     </div>
@@ -25,29 +31,89 @@ export default function HomePage() {
             </section>
 
             {/* ROADMAP BANDEAU */}
-            <section className="bg-primary text-white py-4 shadow-inner overflow-hidden">
-                {/* <div className="max-w-5xl mx-auto px-6 flex items-center justify-between gap-4">
-                    <div className="flex items-center gap-2">
-                        <Text variant="small" className="font-bold text-white uppercase tracking-wider">Phase 1: Atomes</Text>
-                    </div>
-                    <div className="h-px flex-1 bg-white/20" />
-                    <div className="flex items-center gap-2">
-                        <Text variant="small" className="text-white uppercase tracking-wider">Phase 2: Complexes</Text>
-                    </div>
-                    <div className="h-px flex-1 bg-white/20" />
-                    <div className="flex items-center gap-2">
-                        <Text variant="small" className="text-white/60 uppercase tracking-wider">Phase 3: Templates</Text>
-                    </div>
-                </div> */}
+            <section className="border-y-2 border-primary bg-bg-surface py-5">
+                <div className="max-w-5xl mx-auto px-6">
+                    <ol aria-label="Progression du projet" className="flex items-center sm:justify-around max-sm:justify-center flex-wrap gap-6 md:gap-10">
+                        
+                        {/* Phase 1 */}
+                        <li className="flex items-center gap-2">
+                            <Text as='span' className="flex h-5 w-5 items-center justify-center rounded-full bg-success text-[10px] font-bold text-white">
+                                1
+                            </Text>
+                            <Text variant="small" className="font-medium text-text-primary">Fondations</Text>
+                        </li>
+
+                        {/* Phase 2 */}
+                        <li className="flex items-center gap-2">
+                            <Text as='span' className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">
+                                2
+                            </Text>
+                            <Text variant="small" className="font-bold text-primary">Atomes UI</Text>
+                        </li>
+
+                        {/* Phase 3 */}
+                        <li className="flex items-center gap-2 text-text-muted">
+                            <Text as='span' className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle text-[10px]">
+                                3
+                            </Text>
+                            <Text variant="small">Patterns</Text>
+                        </li>
+
+                        {/* Phase 4 */}
+                        <li className="flex items-center gap-2 text-text-muted">
+                            <Text as='span' className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle text-[10px]">
+                                4
+                            </Text>
+                            <Text variant="small">Patterns</Text>
+                        </li>
+
+                        {/* Phase 5 */}
+                        <li className="flex items-center gap-2 text-text-muted">
+                            <Text as='span' className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle text-[10px]">
+                                5
+                            </Text>
+                            <Text variant="small">Audit</Text>
+                        </li>
+
+                    </ol>
+                </div>
             </section>
+            
 
             {/* SECTION ATOMES */}
             <section className="py-20 px-6 max-w-6xl mx-auto">
-                <Heading as="h2" level={2} className="mb-16 text-center">
-                    Atomes UI & Conformité
-                </Heading>
-
+                <div className="mb-16 space-y-4">
+                    <Heading as="h2" level={2} className="mb-16 text-center">
+                        Bibliothèque d'Atomes
+                    </Heading>
+                    <Text variant="body" className="text-text-secondary text-center md:px-32">
+                        Les briques de base de l'interface. Ces composants assurent la cohérence sémantique et visuelle.
+                    </Text>
+                </div>
+                
                 <div className="grid gap-12">
+                    {/* Carte Heading - Structure Sémantique */}
+                    <div className="grid md:grid-cols-2 gap-8 items-center bg-bg-subtle/30 p-8 rounded-3xl border border-border-subtle">
+                        <div className="flex flex-col gap-4 p-10 bg-white rounded-2xl shadow-sm border border-border-subtle">
+                            <Heading as="h3" level={1} className="text-primary">Titre Niveau 1</Heading>
+                            <Heading as="h3" level={2}>Titre Niveau 2</Heading>
+                            <Heading as="h3" level={3}>Titre Niveau 3</Heading>
+                            <Heading as="h3" level={4} className="text-text-secondary italic">Titre Niveau 4 (Variante)</Heading>
+                        </div>
+                        <div className="space-y-4">
+                            <Text variant="caption" className="text-primary font-bold">Composant : Heading</Text>
+                            <Heading as="h3" level={3}>Structure & Navigation</Heading>
+                            <Text variant="body">
+                                Garantit une structure de document logique. La prop <Text variant="code">as</Text> définit la balise HTML, tandis que <Text variant="code">level</Text> gère le style visuel, permettant de respecter la hiérarchie sans sacrifier le design.
+                            </Text>
+                            <div className="p-3 bg-primary-subtle rounded-lg border border-primary/10">
+                                <Text variant="small" className="text-primary-700">
+                                    <Text as='span' variant='small' className='font-bold'>Information :</Text> Ici tous les <Text variant="code">as</Text> sont en H4 pour ne pas casser la hiérarchie sémantique de la page.
+                                </Text>
+                            </div>
+                        </div>
+                    </div>
+
                   {/* Carte Text - La base du système */}
                   <div className="grid md:grid-cols-2 gap-8 items-center bg-bg-subtle/30 p-8 rounded-3xl border border-border-subtle">
                       <div className="flex flex-col gap-4 p-10 bg-white rounded-2xl shadow-sm border border-border-subtle">
@@ -107,16 +173,65 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* SECTION COMPLEXES (Coming Soon) */}
-            <section className="py-20 px-6 bg-bg-subtle/50 text-center">
-                <Heading as="h2" level={2} className="mb-4">Composants complexes</Heading>
-                <Text variant="body" className="mb-12">Prochaines étapes de la bibliothèque.</Text>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                    {['Modales', 'Tabs', 'Accordéons', 'Toasts'].map((item) => (
-                        <div key={item} className="p-4 border border-dashed border-border-subtle rounded-lg grayscale">
-                            <Text variant="small" className="font-bold opacity-50 uppercase tracking-widest">{item}</Text>
+            {/* SECTION COMPLEXES (Roadmap) */}
+            <section className="py-20 px-6 bg-bg-subtle/50 border-t-2 border-primary">
+                <div className="max-w-5xl mx-auto">
+                    <div className="text-center mb-12 space-y-2">
+                        <Heading as="h2" level={2}>Prochaines Étapes</Heading>
+                        <Text variant="body" className="text-text-secondary">
+                            Éléments en cours de conception et objectifs de conformité pour les phases 3 à 5.
+                        </Text>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        {/* Phase 3 : Patterns complexes */}
+                        <div className="flex flex-col gap-4 p-6 border border-dashed border-border-subtle rounded-2xl bg-bg-surface/50 opacity-80">
+                            <Text variant="caption" className="text-primary font-bold">Phase 3 : Patterns ARIA</Text>
+                            <ul className="space-y-3 text-left">
+                                <li className="flex items-center gap-2">
+                                    <Text variant="small">Modales & Focus Trap</Text>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <Text variant="small">Tabs & Keyboard Nav</Text>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <Text variant="small">Tooltips & Popovers</Text>
+                                </li>
+                            </ul>
                         </div>
-                    ))}
+
+                        {/* Phase 4 : Navigation & Thème */}
+                        <div className="flex flex-col gap-4 p-6 border border-dashed border-border-subtle rounded-2xl bg-bg-surface/50 opacity-80">
+                            <Text variant="caption" className="text-primary font-bold">Phase 4 : Global UI</Text>
+                            <ul className="space-y-3 text-left">
+                                <li className="flex items-center gap-2">
+                                    <Text variant="small">Menu Burger Accessible</Text>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <Text variant="small">Dark Mode Switcher</Text>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <Text variant="small">Breadcrumbs Sémantiques</Text>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* Phase 5 : Expertise A11y */}
+                        <div className="flex flex-col gap-4 p-6 border border-dashed border-border-subtle rounded-2xl bg-bg-surface/50 opacity-80 md:col-span-1 sm:col-span-2">
+                            <Text variant="caption" className="text-primary font-bold">Phase 5 : Audit & Qualité</Text>
+                            <ul className="space-y-3 text-left">
+                                <li className="flex items-center gap-2 font-medium">
+                                    <Text variant="small">Audit Automatisé Axe-core</Text>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <Text variant="small">Tests Lecteurs d'écran</Text>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <Text variant="small">Documentation A11y</Text>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </section>
         </>
