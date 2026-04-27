@@ -93,7 +93,7 @@ export default function HomePage() {
                 
                 <div className="grid gap-12">
                     {/* Carte Heading - Structure Sémantique */}
-                    <div className="grid md:grid-cols-2 gap-8 items-center bg-bg-subtle/30 p-8 rounded-3xl border border-border-subtle">
+                    <div className="grid md:grid-cols-2 gap-8 items-center bg-bg-subtle/30 p-8 rounded-3xl border border-primary">
                         <div className="flex flex-col gap-4 p-10 bg-white rounded-2xl shadow-sm border border-border-subtle">
                             <Heading as="h3" level={1} className="text-primary">Titre Niveau 1</Heading>
                             <Heading as="h3" level={2}>Titre Niveau 2</Heading>
@@ -115,7 +115,7 @@ export default function HomePage() {
                     </div>
 
                   {/* Carte Text - La base du système */}
-                  <div className="grid md:grid-cols-2 gap-8 items-center bg-bg-subtle/30 p-8 rounded-3xl border border-border-subtle">
+                  <div className="grid md:grid-cols-2 gap-8 items-center bg-bg-subtle/30 p-8 rounded-3xl border border-primary">
                       <div className="flex flex-col gap-4 p-10 bg-white rounded-2xl shadow-sm border border-border-subtle">
                           <Text variant="lead">Texte d'introduction (Lead)</Text>
                           <Text variant="body">Corps de texte standard pour la lecture.</Text>
@@ -136,7 +136,7 @@ export default function HomePage() {
                   </div>
 
                   {/* Carte Button */}
-                  <div className="grid md:grid-cols-2 gap-8 items-center bg-bg-subtle/30 p-8 rounded-3xl border border-border-subtle">
+                  <div className="grid md:grid-cols-2 gap-8 items-center bg-bg-subtle/30 p-8 rounded-3xl border border-primary">
                       <div className="flex flex-wrap gap-4 p-10 bg-white rounded-2xl shadow-sm border border-border-subtle justify-center">
                           <Button variant="primary">Valider</Button>
                           <Button variant="outline">Annuler</Button>
@@ -153,7 +153,7 @@ export default function HomePage() {
                   </div>
 
                   {/* Carte Input */}
-                  <div className="grid md:grid-cols-2 gap-8 items-center bg-bg-subtle/30 p-8 rounded-3xl border border-border-subtle">
+                  <div className="grid md:grid-cols-2 gap-8 items-center bg-bg-subtle/30 p-8 rounded-3xl border border-primary">
                       <div className="p-10 bg-white rounded-2xl shadow-sm border border-border-subtle">
                           <Input 
                               label="Nom complet" 
