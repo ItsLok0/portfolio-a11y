@@ -14,7 +14,7 @@ export default function HomePage() {
                         <span className="flex h-2 w-2" aria-hidden="true">
                             <span className="inline-flex rounded-full h-2 w-2 bg-primary"></span>
                         </span>
-                        <Text variant="caption" className="font-bold">Phase 2 en cours : Bibliothèque d'atomes (UI Kit)</Text>
+                        <Text variant="caption" className="font-bold text-text-secondary">Phase 2 en cours : Bibliothèque d'atomes (UI Kit)</Text>
                     </div>
                     <Heading as="h1" className="text-5xl md:text-6xl font-extrabold">
                         Kore <span className="text-primary">A11Y</span>
@@ -52,7 +52,7 @@ export default function HomePage() {
                         </li>
 
                         {/* Phase 3 */}
-                        <li className="flex items-center gap-2 text-text-muted">
+                        <li className="flex items-center gap-2 text-secondary">
                             <Text as='span' className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle text-[10px]">
                                 3
                             </Text>
@@ -60,7 +60,7 @@ export default function HomePage() {
                         </li>
 
                         {/* Phase 4 */}
-                        <li className="flex items-center gap-2 text-text-muted">
+                        <li className="flex items-center gap-2 text-secondary">
                             <Text as='span' className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle text-[10px]">
                                 4
                             </Text>
@@ -68,7 +68,7 @@ export default function HomePage() {
                         </li>
 
                         {/* Phase 5 */}
-                        <li className="flex items-center gap-2 text-text-muted">
+                        <li className="flex items-center gap-2 text-secondary">
                             <Text as='span' className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle text-[10px]">
                                 5
                             </Text>
@@ -120,10 +120,10 @@ export default function HomePage() {
                           <Text variant="lead">Texte d'introduction (Lead)</Text>
                           <Text variant="body">Corps de texte standard pour la lecture.</Text>
                           <div className="flex items-center gap-2">
-                              <Text variant="small" className="text-text-muted">Libellé :</Text>
+                              <Text variant="small" className="text-secondary">Libellé :</Text>
                               <Text variant="code">Component.tsx</Text>
                           </div>
-                          <Text variant="caption">MÉTADONNÉES EN MAJUSCULES</Text>
+                          <Text variant="caption" className='text-secondary'>MÉTADONNÉES EN MAJUSCULES</Text>
                       </div>
                       <div className="space-y-4">
                           <Text variant="caption" className="text-primary font-bold">Composant : Text</Text>

@@ -101,7 +101,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
                         <Text
                             as="p"
                             id={descId}
-                            className={cn('text-text-muted', helperSizeStyles[size], error && 'sr-only')}
+                            className={cn('text-text-secondary', helperSizeStyles[size], error && 'sr-only')}
                         >
                             {description}
                         </Text>

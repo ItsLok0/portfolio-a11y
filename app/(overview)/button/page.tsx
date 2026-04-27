@@ -77,7 +77,7 @@ export default function ButtonDemoPage() {
                     </div>
                     <div className="flex items-center gap-6">
                         <Button variant="link">Retour au catalogue</Button>
-                        <Button variant="link" className="text-text-muted">Passer l'étape</Button>
+                        <Button variant="link" className="text-text-secondary">Passer l'étape</Button>
                     </div>
                 </div>
 

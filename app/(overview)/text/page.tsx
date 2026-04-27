@@ -72,13 +72,13 @@ export default function TextDemoPage() {
                     <Heading as='h2' level={3} className='text-primary'>Sémantique (Propriété "as")</Heading>
                     <div className="space-y-4">
                         <div>
-                            <Text variant="small" className="block mb-1 text-text-muted">Rendu en tant que &lt;label&gt; :</Text>
+                            <Text variant="small" className="block mb-1 text-text-secondary">Rendu en tant que &lt;label&gt; :</Text>
                             <Text variant="body" as="label" htmlFor="email" className="cursor-pointer underline">
                                 Adresse Email
                             </Text>
                         </div>
                         <div>
-                            <Text variant="small" className="block mb-1 text-text-muted">Rendu en tant que &lt;span&gt; :</Text>
+                            <Text variant="small" className="block mb-1 text-text-secondary">Rendu en tant que &lt;span&gt; :</Text>
                             <Text variant="body" as="span" className="bg-yellow-100 italic">
                                 Je suis un span à l'intérieur d'un flux de texte.
                             </Text>
