@@ -9,7 +9,7 @@ const links = [
   { name: 'Home', href: '/' },
   { name: 'Textes', href: '/text' },
   { name: 'Boutton', href: '/button' },
-  { name: 'Inputs', href: '/input' },
+  { name: 'Inputs & \n Textareas', href: '/input' },
 ];
  
 export default function NavLinks() {

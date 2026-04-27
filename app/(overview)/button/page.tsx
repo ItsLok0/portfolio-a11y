@@ -83,9 +83,8 @@ export default function ButtonDemoPage() {
 
                 {/* Exemple d'accessibilité : Focus */}
                 <div className="mt-10 p-6 bg-primary-subtle rounded-lg border border-border-subtle">
-                    <Heading as="h3" level={4} className="mb-2">Note sur l'accessibilité</Heading>
                     <Text variant="body">
-                        Tous ces boutons supportent la navigation au clavier. Appuyez sur <Text variant="code">Tab</Text> pour tester les états de focus et les contrastes.
+                        <Text as='span' variant='small' className='font-bold'>Note Accessibilité :</Text> Tous ces boutons supportent la navigation au clavier. Appuyez sur <Text variant="code">Tab</Text> pour tester les états de focus et les contrastes.
                     </Text>
                 </div>
 
