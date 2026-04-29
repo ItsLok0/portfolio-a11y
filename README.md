@@ -4,6 +4,8 @@
 
 [Site en ligne](https://kore-a11y-pierre.vercel.app/)
 
+> Actuellement, les composants ``<Text>``, ``<Heading>``, ``<Button>``, ``<Input>`` et ``<Textarea>``sont disponibles.
+
 - [Next.js: 16](https://nextjs.org/)
 - [Tailwind: 4](https://tailwindcss.com/)
 
