@@ -1,5 +1,7 @@
 # Portfolio A11y — Next.js 16 (WIP - Work in progress)
 
+<img width="700" height="400" alt="Capture d’écran 2026-04-28 à 23 36 17" src="https://github.com/user-attachments/assets/161b07e0-f3ea-4fc4-8c73-a15b64e730dc" />
+
 [Site en ligne](https://kore-a11y-pierre.vercel.app/)
 
 - [Next.js: 16](https://nextjs.org/)
