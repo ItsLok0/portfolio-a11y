@@ -1,89 +1,108 @@
-# Portfolio A11y — Next.js 16 (WIP - Work in progress)
+# Kore A11Y — Bibliothèque de composants accessibles *(WIP)*
 
-<img width="700" height="400" alt="Capture d’écran 2026-04-28 à 23 36 17" src="https://github.com/user-attachments/assets/161b07e0-f3ea-4fc4-8c73-a15b64e730dc" />
+<img width="700" height="400" alt="Aperçu de Kore A11Y" src="https://github.com/user-attachments/assets/161b07e0-f3ea-4fc4-8c73-a15b64e730dc" />
 
-[Site en ligne](https://kore-a11y-pierre.vercel.app/)
+🔗 **[Voir la démo live →](https://kore-a11y-pierre.vercel.app/)**
 
-> Actuellement, les composants ``<Text>``, ``<Heading>``, ``<Button>``, ``<Input>`` et ``<Textarea>``sont disponibles.
-
-- [Next.js: 16](https://nextjs.org/)
-- [Tailwind: 4](https://tailwindcss.com/)
-
-> Ce portfolio démontre ma capacité à concevoir des interfaces modernes, performantes et strictement conformes aux normes **WCAG 2.2**, en utilisant les dernières fonctionnalités du **App Router de Next.js**.
+> Bibliothèque de composants React accessibles, conformes **WCAG 2.2**, construite avec **Next.js 16** et **Tailwind CSS 4**.
 
 ---
 
-## Objectif
+## Composants disponibles
 
-En tant que développeur web junior spécialisé en accessibilité, j'ai conçu ce projet pour :
-1. **Prouver ma maîtrise technique** de Next.js 16.
-2. **Implémenter des patterns complexes** d'accessibilité.
-3. **Documenter chaque composant** afin d'expliquer pourquoi et comment il est accessible.
+| Composant | Statut |
+|-----------|--------|
+| `<Text>` | ✅ Disponible |
+| `<Heading>` | ✅ Disponible |
+| `<Button>` | ✅ Disponible |
+| `<Input>` | ✅ Disponible |
+| `<Textarea>` | ✅ Disponible |
+| Autres composants | 🔲 En cours |
+
+---
+
+## Pourquoi ce projet ?
+
+En tant que développeur frontend spécialisé en accessibilité, j'ai conçu Kore A11Y pour trois raisons concrètes :
+
+1. **Prouver la maîtrise technique** — Next.js 16 App Router, React 19, TypeScript strict
+2. **Implémenter des patterns d'accessibilité complexes** — au-delà du simple `alt` sur les images
+3. **Documenter chaque choix** — pourquoi et comment chaque composant est accessible
 
 ---
 
 ## Stack
 
 | Technologie | Rôle |
-| :--- | :--- |
-| **Next.js 16 (App Router)** | Framework Fullstack qui gère le rendu côté serveur et le routage pour rendre plus efficace l'affichage et le référencement. |
-| **React 19** | Bibliothèque UI qui gère l'interface grâce à des composants réutilisables et optimise les performances. |
-| **Tailwind CSS 4** | Framework Utility-First qui optimise la rapidité de compilation et simplifiant le design via des classes CSS réutilisables.  |
-| **TypeScript** | Surcouche de Javascript qui permet un typage statique rigoureux afin de limiter les erreurs lors du développement. |
-| **ESLint + jsx-a11y** | Outils d'analyse pour l'accessibilité en temps réel |
+|-------------|------|
+| **Next.js 16 (App Router)** | Rendu serveur, routage optimisé, SEO |
+| **React 19** | Composants réutilisables, performances UI |
+| **Tailwind CSS 4** | Utility-first, compilation rapide |
+| **TypeScript** | Typage statique, moins d'erreurs à la source |
+| **ESLint + jsx-a11y** | Détection des problèmes d'accessibilité en temps réel |
 
 ---
 
-## Détails Techniques
+## Focus accessibilité
 
-### 1. Prérequis
-Avoir **Node.js v20+** installé sur la machine.
+Chaque composant est audité selon trois critères :
 
-### 2. Installation
+- **Navigation clavier** — gestion du focus (`tabindex`, `focus-visible`)
+- **Sémantique HTML5** — balises natives avant tout, ARIA en dernier recours
+- **Attributs ARIA** — uniquement là où c'est nécessaire (pas d'ARIA cosmétique)
+
+---
+
+## Lancer le projet en local
+
+**Prérequis** : Node.js v20+ et pnpm installés.
+
 ```bash
-# Cloner le dépôt
-git clone [https://github.com/ItsLok0/portfolio-a11y.git](https://github.com/ItsLok0/portfolio-a11y.git)
-
-# Entrer dans le dossier
-cd portfolio-a11y
+# Cloner le repo
+git clone https://github.com/ItsLok0/Kore-A11y.git
+cd Kore-A11y
 
 # Installer les dépendances
-npm install
+pnpm i
+
+# Lancer le serveur de dev
+pnpm dev
 ```
 
-### 3. Commandes disponibles
-Avoir **pnpm** installé sur la machine (plus rapide et efficace que ``npm`` ou ``yarn``).
-
-- ``pnpm i`` : Installer les packages du projet
-- ``pnpm dev`` : Compile l'application pour la production.
-
-### 4. Structure des dossiers
-- ``/ui/`` : Eléments réutilisables.
-- ``/component/`` : Éléments de structure (SkipLink, Navbar, Footer).
-
-### 5. Méthodologie & Workflow (IA-Assisted)
-Bien que ce projet soit réalisé en autonomie, j'ai choisi d'intégrer l'``Intelligence Artificielle (Gemini & Claude)`` non pas comme un simple générateur de code, mais comme un partenaire ``stratégique`` pour simuler un flux de travail professionnel de type ``SCRUM``.
-
-Pour garantir la rigueur du projet, j'ai utilisé l'IA pour :
-- ``Définition du Product Backlog :`` En agissant comme un Product Owner, l'IA a aidé à découper les fonctionnalités complexes en ``User Stories``.
-- ``Planification Agile :`` Chaque étape du développement est documentée via des GitHub Issues, permettant un suivi précis et une approche itérative (Sprints).
-- ``Garde-fou A11y :`` L'IA m'accompagne dans la vérification théorique des normes ``WCAG 2.2`` avant chaque implémentation technique.
-
-``Pourquoi cette approche ?`` L'objectif est de démontrer ma capacité à piloter un projet de A à Z, en utilisant les outils modernes pour structurer ma pensée, optimiser mon temps de développement et garantir une qualité de code conforme aux standards de l'industrie.
+Ouvre ensuite [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## Focus Accessibilité
+## Structure du projet
 
-Chaque composant présent dans cette bibliothèque est audité selon les critères suivants :
-
-- **Navigation clavier** : Gestion du focus (``tabindex``, ``focus-visible``).
-- **Sémantique** : Utilisation de HTML5 sémantique pour une meilleure lecture par les technologies d'assistance.
-- **Signaux ARIA** : Utilisation des attributs ``aria`` quand c'est nécessaire.
+```
+/app/ui/component    → Composants réutilisables (Text, Button, Input...)
+/app/layout/         → Éléments de structure (Header, SkipLink, ...)
+```
 
 ---
 
-## Contact
+## Méthodologie
 
-- [Portfolio en ligne](https://portfolio-pp-gamma.vercel.app/)
-- [Linkedin](https://www.linkedin.com/in/pierre-parent-811533283/)
+Projet réalisé en autonomie avec une approche **SCRUM allégée** :
+- GitHub Issues pour le suivi des sprints
+- Chaque composant passe par une vérification théorique avant implémentation
+
+---
+
+## Roadmap
+
+- [x] Composants de base (Text, Heading, Button, Input, Textarea)
+- [ ] Composants complexes (Modal, Accordion, Select, Toast...)
+- [ ] Page de documentation par composant
+- [ ] Tests automatisés accessibilité (axe-core / jest-axe)
+
+---
+
+## Auteur
+
+**Pierre Parent** — Développeur Frontend | Next.js · Angular · TypeScript | Accessibilité RGAA
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-000?style=flat&logo=vercel&logoColor=white)](https://portfolio-pp-gamma.vercel.app/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pierre-parent-dev/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/ItsLok0)
