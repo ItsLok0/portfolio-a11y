@@ -142,52 +142,7 @@ export default function TypographyDemoPage() {
                         Les composants <strong>Heading</strong> et <strong>Text</strong> séparent strictement la sémantique de la présentation, 
                         permettant une navigation claire pour les lecteurs d'écran (Ticket #4).
                     </Text>
-<<<<<<< HEAD
-                </div>
-
-                {/* Caption - Souvent utilisé pour les métadonnées */}
-                <div className="flex flex-col gap-4 border-b pb-8">
-                    <Heading as='h2' level={3} className='text-primary'>Variante : Caption</Heading>
-                    <div className="flex flex-col gap-2">
-                        <Text variant="caption">Publié le 22 Avril 2026</Text>
-                        <Text variant="caption" as="figcaption">
-                            Légende : Une illustration du rendu typographique.
-                        </Text>
-                    </div>
-                </div>
-
-                {/* Code - Pour les éléments techniques */}
-                <div className="flex flex-col gap-4 border-b pb-8">
-                    <Heading as='h2' level={3} className='text-primary'>Variante : Code</Heading>
-                    <div className="flex items-center gap-2">
-                        <Text variant="body">Utilisez la commande</Text>
-                        <Text variant="code">npm install @ui/components</Text>
-                        <Text variant="body">pour commencer.</Text>
-                    </div>
-                </div>
-
-                {/* Polymorphisme - Changement de balise HTML */}
-                <div className="flex flex-col gap-4">
-                    <Heading as='h2' level={3} className='text-primary'>Sémantique (Propriété "as")</Heading>
-                    <div className="space-y-4">
-                        <div>
-                            <Text variant="small" className="block mb-1 text-text-secondary">Rendu en tant que &lt;label&gt; :</Text>
-                            <Text variant="body" as="label" htmlFor="email" className="cursor-pointer underline">
-                                Adresse Email
-                            </Text>
-                        </div>
-                        <div>
-                            <Text variant="small" className="block mb-1 text-text-secondary">Rendu en tant que &lt;span&gt; :</Text>
-                            <Text variant="body" as="span" className="bg-yellow-100 italic">
-                                Je suis un span à l'intérieur d'un flux de texte.
-                            </Text>
-                        </div>
-                    </div>
-                </div>
-
-=======
                 </footer>
->>>>>>> 26-checkbox-radio-group
             </div>
         </div>
     );
