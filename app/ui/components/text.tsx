@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
 import { forwardRef, createElement } from 'react';
+import React from "react";
 
 type TextVariant = 'body' | 'small' | 'lead' | 'code' | 'caption';
 type TextTag = 'p' | 'span' | 'small' | 'figcaption' | 'code' | 'label' | 'legend';

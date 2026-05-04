@@ -2,6 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import { forwardRef } from 'react';
+import React from "react";
 
 export type ButtonVariant =
   | 'primary'

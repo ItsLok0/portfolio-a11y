@@ -3,6 +3,7 @@ import "@/app/globals.css";
 import SkipLink from "@/app/layout/skip-link";
 import { open_sans } from "@/app/ui/fonts";
 import Header from "./layout/header";
+import React from "react";
 
 export const metadata: Metadata = {
   title: {

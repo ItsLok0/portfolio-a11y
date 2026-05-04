@@ -3,6 +3,7 @@
 import { useId, forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 import { Text } from '@/app/ui/components/text';
+import React from "react";
 
 type CheckboxSize = 'sm' | 'md' | 'lg';
 

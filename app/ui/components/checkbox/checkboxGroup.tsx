@@ -1,6 +1,7 @@
 'use client';
 
 import { useId, forwardRef } from 'react';
+import React from "react";
 import { cn } from '@/lib/utils';
 import { Text } from '@/app/ui/components/text';
 
