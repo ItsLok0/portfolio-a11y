@@ -3,7 +3,10 @@ import { Heading } from '@/app/ui/components/heading';
 import { Text } from '@/app/ui/components/text';
 import { Input } from '@/app/ui/components/input';
 import Link from 'next/link';
-
+import { TextArea } from './ui/components/textarea';
+import { Checkbox } from './ui/components/checkbox/checkbox';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 export default function HomePage() {
     return (
         <>
@@ -37,48 +40,57 @@ export default function HomePage() {
                         
                         {/* Phase 1 */}
                         <li className="flex items-center gap-2">
-                            <Text as='span' className="flex h-5 w-5 items-center justify-center rounded-full bg-success text-[10px] font-bold text-white">
-                                1
+                            <Text aria-hidden="true" as='span' className="flex h-5 w-5 items-center justify-center rounded-full bg-success text-[10px] font-bold text-white">
+                                <FontAwesomeIcon icon={faCheck} className='w-3' />
                             </Text>
-                            <Text variant="small" className="font-medium text-text-primary">Fondations</Text>
+                            <Text variant="small" className="font-bold text-success">Phase 1 : Lancement
+                                <Text as="span" className="sr-only">, Terminé</Text>
+                            </Text>
                         </li>
 
                         {/* Phase 2 */}
                         <li className="flex items-center gap-2">
-                            <Text as='span' className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">
+                            <Text aria-hidden="true" as='span' className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">
                                 2
                             </Text>
-                            <Text variant="small" className="font-bold text-primary">Atomes UI</Text>
+                            <Text variant="small" className="font-bold text-primary">Phase 2 : Atomes UI
+                                <Text as="span" className="sr-only">, En cours</Text>
+                            </Text>
                         </li>
 
                         {/* Phase 3 */}
                         <li className="flex items-center gap-2 text-text-muted">
-                            <Text as='span' className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle text-[10px]">
+                            <Text aria-hidden="true" as='span' className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle text-[10px]">
                                 3
                             </Text>
-                            <Text variant="small">Patterns</Text>
+                            <Text variant="small" className="font-bold text-text-muted">Phase 3 : Patterns
+                                <Text as="span" className="sr-only">, À venir</Text>
+                            </Text>
                         </li>
 
                         {/* Phase 4 */}
                         <li className="flex items-center gap-2 text-text-muted">
-                            <Text as='span' className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle text-[10px]">
+                            <Text aria-hidden="true" as='span' className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle text-[10px]">
                                 4
                             </Text>
-                            <Text variant="small">Patterns</Text>
+                            <Text variant="small" className="font-bold text-text-muted">Phase 4 : Patterns
+                                <Text as="span" className="sr-only">, À venir</Text>
+                            </Text>
                         </li>
 
                         {/* Phase 5 */}
                         <li className="flex items-center gap-2 text-text-muted">
-                            <Text as='span' className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle text-[10px]">
+                            <Text aria-hidden="true" as='span' className="flex h-5 w-5 items-center justify-center rounded-full border border-border-subtle text-[10px]">
                                 5
                             </Text>
-                            <Text variant="small">Audit</Text>
+                            <Text variant="small" className="font-bold text-text-muted">Phase 5 : Audit
+                                <Text as="span" className="sr-only">, À venir</Text>
+                            </Text>
                         </li>
 
                     </ol>
                 </div>
             </section>
-            
 
             {/* SECTION ATOMES */}
             <section className="py-20 px-6 max-w-6xl mx-auto">
@@ -95,10 +107,10 @@ export default function HomePage() {
                     {/* Carte Heading - Structure Sémantique */}
                     <div className="grid md:grid-cols-2 gap-8 items-center bg-bg-subtle/30 p-8 rounded-3xl border border-primary">
                         <div className="flex flex-col gap-4 p-10 bg-white rounded-2xl shadow-sm border border-border-subtle">
-                            <Heading as="h3" level={1} className="text-primary">Titre Niveau 1</Heading>
-                            <Heading as="h3" level={2}>Titre Niveau 2</Heading>
-                            <Heading as="h3" level={3}>Titre Niveau 3</Heading>
-                            <Heading as="h3" level={4} className="text-text-secondary italic">Titre Niveau 4 (Variante)</Heading>
+                            <Heading as="span" level={1} className="text-primary">Titre Niveau 1</Heading>
+                            <Heading as="span" level={2}>Titre Niveau 2</Heading>
+                            <Heading as="span" level={3}>Titre Niveau 3</Heading>
+                            <Heading as="span" level={4} className="text-text-secondary italic">Titre Niveau 4 (Variante)</Heading>
                         </div>
                         <div className="space-y-4">
                             <Text variant="caption" className="text-primary font-bold">Composant : Heading</Text>
@@ -167,6 +179,49 @@ export default function HomePage() {
                           <Text variant="body">
                               Liaison explicite entre label et champ via <Text variant="code">id</Text>. 
                               Les messages d'erreur et descriptions sont liés via <Text variant="code">aria-describedby</Text>.
+                          </Text>
+                      </div>
+                  </div>
+
+                  {/* Carte TextArea */}
+                  <div className="grid md:grid-cols-2 gap-8 items-center bg-bg-subtle/30 p-8 rounded-3xl border border-primary">
+                      <div className="p-10 bg-white rounded-2xl shadow-sm border border-border-subtle">
+                          <TextArea 
+                              label="Description de votre projet" 
+                              placeholder="Décrivez ici les détails techniques..." 
+                              rows={4}
+                              description="Soyez le plus précis possible." 
+                          />
+                      </div>
+                      <div className="space-y-4">
+                          <Text variant="caption" className="text-primary">Composant : TextArea</Text>
+                          <Heading as="h3" level={3}>Zones de texte</Heading>
+                          <Text variant="body">
+                              Hérite de toute la logique d'accessibilité de l'Input standard. Il supporte les attributs natifs <Text variant="code">rows</Text> et <Text variant="code">cols</Text> tout 
+                              en conservant un design fluide et responsive.
+                          </Text>
+                      </div>
+                  </div>
+
+                  {/* Carte Checkbox */}
+                  <div className="grid md:grid-cols-2 gap-8 items-center bg-bg-subtle/30 p-8 rounded-3xl border border-primary">
+                      <div className="flex flex-col gap-6 p-10 bg-white rounded-2xl shadow-sm border border-border-subtle">
+                          <Checkbox 
+                              label="J'accepte les conditions générales" 
+                              defaultChecked
+                          />
+                          <Checkbox 
+                              label="S'abonner à la newsletter" 
+                              description="Recevez nos actualités une fois par mois."
+                          />
+                      </div>
+                      <div className="space-y-4">
+                          <Text variant="caption" className="text-primary">Composant : Checkbox</Text>
+                          <Heading as="h3" level={3}>Indicateurs de choix binaires</Heading>
+                          <Text variant="body">
+                              L'input est imbriqué dans le label pour maximiser la surface de clic (UX). 
+                              L'utilisation de <Text variant="code">useId</Text> garantit une liaison robuste entre 
+                              le texte, la description et l'état visuel pour les technologies d'assistance.
                           </Text>
                       </div>
                   </div>

@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 import { forwardRef } from 'react';
 
-type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span';
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
 export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
@@ -24,14 +24,14 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
     (
         {
             children,
-            as = 'h2',
+            as = 'span',
             level,
             className,
             ...props
         }, ref
     ) => {
         const HeadingComponent = as;
-        const visualLevel = level ?? (Number(as[1]) as HeadingLevel);
+        const visualLevel = level || (as === 'span' ? 6 : parseInt(as.slice(1)) as HeadingLevel);
 
         return (
             <HeadingComponent

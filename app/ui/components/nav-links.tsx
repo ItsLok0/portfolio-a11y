@@ -6,10 +6,11 @@ import { cn } from '@/lib/utils';
 import { Text } from '@/app/ui/components/text';
 
 const links = [
-  { name: 'Home', href: '/' },
-  { name: 'Textes', href: '/text' },
-  { name: 'Boutton', href: '/button' },
-  { name: 'Inputs & \n Textareas', href: '/input' },
+    { name: 'Home', href: '/' },
+    { name: 'Typographie', href: '/text' },
+    { name: 'Boutton', href: '/button' },
+    { name: 'Inputs & \n Textareas', href: '/input' },
+    { name: 'Checkbox', href: '/checkbox' },
 ];
  
 export default function NavLinks() {
