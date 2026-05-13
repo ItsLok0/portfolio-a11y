@@ -109,7 +109,7 @@ export default function CheckboxDemoPage() {
                 </section>
 
                 {/* Note Technique finale */}
-                <footer className="mt-10 p-8 bg-primary-subtle rounded-2xl border border-border-subtle">
+                <section className="mt-10 p-8 bg-primary-subtle rounded-2xl border border-border-subtle">
                     <div className="flex flex-col gap-4">
                         <Heading as="h3" level={4} className="text-primary italic">Expertise A11y & Structure</Heading>
                         <div className="grid md:grid-cols-2 gap-8">
@@ -129,7 +129,7 @@ export default function CheckboxDemoPage() {
                             </div>
                         </div>
                     </div>
-                </footer>
+                </section>
 
             </div>
         </div>

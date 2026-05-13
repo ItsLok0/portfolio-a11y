@@ -14,6 +14,27 @@
   --color-secondary-active: #374151;
   --color-secondary-subtle: #F3F4F6;
   --color-secondary-fg:     #FFFFFF;
+
+  /* --- Info --- */
+  --color-info:             #0369A1;
+  --color-info-hover:       #075985;
+  --color-info-active:      #0C4A6E;
+  --color-info-subtle:      #F0F9FF;
+  --color-info-fg:          #FFFFFF;
+
+  /* --- Warning --- */
+  --color-warning:          #B45309;
+  --color-warning-hover:    #92400E;
+  --color-warning-active:   #78350F;
+  --color-warning-subtle:   #FFFBEB;
+  --color-warning-fg:       #FFFFFF;
+
+  /* --- Neutral --- */
+  --color-neutral:          #374151;
+  --color-neutral-hover:    #1F2937;
+  --color-neutral-active:   #111827;
+  --color-neutral-subtle:   #F9FAFB;
+  --color-neutral-fg:       #FFFFFF;
  
   /* --- Danger --- */
   --color-danger:           #B91C1C;

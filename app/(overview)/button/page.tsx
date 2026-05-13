@@ -1,94 +1,302 @@
-import { Button } from '@/app/ui/components/button';
-import { Heading } from '@/app/ui/components/heading';
-import { Text } from '@/app/ui/components/text'; // Utilisation de ton nouveau composant Text pour la cohérence
-import { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-    title: 'Boutons accessibles',
-    description: 'Découvrez différents exemples de boutons accessibles et bien conçus pour améliorer l\'expérience utilisateur.',
-};
+import { Button } from "@/app/ui/components/Button/button";
+import { Heading } from "@/app/ui/components/heading";
+import { Text } from "@/app/ui/components/text";
+import { ButtonLink } from "@/app/ui/components/Button/buttonlink";
+import { useState } from 'react';
+import {
+  faTrash,
+  faPaperPlane,
+  faPlus,
+  faArrowRight,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function ButtonDemoPage() {
-    return (
-        <div className="flex flex-1 items-center justify-center p-3 flex-col gap-10">
-            <Heading as="h1" className='mb-10'>
-                Système d'Actions (Boutons)
-            </Heading>
+  const [isLoading, setIsLoading] = useState(false);
 
-            <div className="w-full flex flex-col gap-12 max-w-4xl">
-                
-                {/* Section Primaires */}
-                <div className="flex flex-col gap-6 border-b pb-8">
-                    <div className="flex flex-col gap-1">
-                        <Heading as='h2' level={3} className='text-primary'>Boutons Primaires</Heading>
-                        <Text variant="small">Utilisés pour l'action principale de la page.</Text>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-4">
-                        <Button variant="primary" size='sm'>Petit</Button>
-                        <Button variant="primary">Standard</Button>
-                        <Button variant="primary" size='lg'>Grand format</Button>
-                        <Button variant="primary" disabled>Désactivé</Button>
-                    </div>
-                    <Button variant="primary" fullWidth>Action prioritaire sur toute la largeur</Button>
-                </div>
+  const simulateLoading = () => {
+    setIsLoading(true);
+    /*global setTimeout*/
+    setTimeout(() => setIsLoading(false), 2500);
+  };
 
-                {/* Section Secondaires & Outline */}
-                <div className="flex flex-col gap-6 border-b pb-8">
-                    <div className="flex flex-col gap-1">
-                        <Heading as='h2' level={3} className='text-primary'>Actions Secondaires</Heading>
-                        <Text variant="small">Pour les actions de support ou alternatives (Secondary & Outline).</Text>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-4">
-                        <Button variant="secondary">Secondaire</Button>
-                        <Button variant="outline">Contour (Outline)</Button>
-                        <Button variant="ghost">Fantôme (Ghost)</Button>
-                    </div>
-                </div>
+  return (
+    <div className="flex flex-1 flex-col items-center justify-center gap-10 p-3 sm:p-6">
 
-                {/* Section États Sémantiques (Danger & Succès) */}
-                <div className="flex flex-col gap-6 border-b pb-8">
-                    <div className="flex flex-col gap-1">
-                        <Heading as='h2' level={3} className='text-primary'>États Sémantiques</Heading>
-                        <Text variant="small">Pour confirmer un succès ou avertir d'une action destructive.</Text>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div className="flex flex-col gap-4">
-                            <Text variant="caption">Validation</Text>
-                            <div className="flex gap-2 items-center">
-                                <Button variant="success" size="sm">Valider</Button>
-                                <Button variant="success">Succès</Button>
-                            </div>
-                        </div>
-                        <div className="flex flex-col gap-4">
-                            <Text variant="caption">Zone de danger</Text>
-                            <div className="flex gap-2 items-center">
-                                <Button variant="danger" size="sm">Supprimer</Button>
-                                <Button variant="danger">Action critique</Button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      {/* Header */}
+      <div className="text-center">
+        <Heading as="h1">Button</Heading>
+        <Text variant="lead" className="font-bold text-primary">
+          Boutons accessibles & sémantiques
+        </Text>
+      </div>
 
-                {/* Section Liens et Navigation */}
-                <div className="flex flex-col gap-6">
-                    <div className="flex flex-col gap-1">
-                        <Heading as='h2' level={3} className='text-primary'>Navigation & Discrétion</Heading>
-                        <Text variant="small">Le style "Link" conserve les propriétés d'un bouton tout en ressemblant à un lien.</Text>
-                    </div>
-                    <div className="flex items-center gap-6">
-                        <Button variant="link">Retour au catalogue</Button>
-                        <Button variant="link" className="text-text-secondary">Passer l'étape</Button>
-                    </div>
-                </div>
+      <div className="flex w-full max-w-4xl flex-col gap-16">
 
-                {/* Exemple d'accessibilité : Focus */}
-                <div className="mt-10 p-6 bg-primary-subtle rounded-lg border border-border-subtle">
-                    <Text variant="body">
-                        <Text as='span' variant='small' className='font-bold'>Note Accessibilité :</Text> Tous ces boutons supportent la navigation au clavier. Appuyez sur <Text variant="code">Tab</Text> pour tester les états de focus et les contrastes.
-                    </Text>
-                </div>
+        {/* ── SECTION 1 : VARIANTS ── */}
+        <section className="flex flex-col gap-8 border-b pb-12">
+          <div className="space-y-1">
+            <Heading as="h2" level={2}>Variants</Heading>
+            <Text variant="small">
+              7 variants couvrant tous les contextes sémantiques de l'interface.
+              Chaque variant possède ses propres états <Text variant="code">hover</Text>,{' '}
+              <Text variant="code">active</Text> et <Text variant="code">focus</Text>.
+            </Text>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4 rounded-3xl border border-border-subtle bg-bg-subtle/30 p-6 sm:p-8">
+            <Button variant="primary">Primary</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="danger">Danger</Button>
+            <Button variant="success">Success</Button>
+            <Button variant="outline">Outline</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="link">Link</Button>
+          </div>
+        </section>
 
+        {/* ── SECTION 2 : TAILLES ── */}
+        <section className="flex flex-col gap-8 border-b pb-12">
+          <div className="space-y-1">
+            <Heading as="h2" level={2}>Tailles</Heading>
+            <Text variant="small">
+              3 tailles disponibles via la prop <Text variant="code">size</Text>.
+              La taille <Text variant="code">md</Text> est celle par défaut.
+            </Text>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-4 rounded-3xl border border-border-subtle bg-bg-subtle/30 p-6 sm:p-8">
+            <Button size="sm">Small</Button>
+            <Button size="md">Medium</Button>
+            <Button size="lg">Large</Button>
+          </div>
+        </section>
+
+        {/* ── SECTION 3 : AVEC ICÔNES ── */}
+        <section className="flex flex-col gap-8 border-b pb-12">
+          <div className="space-y-1">
+            <Heading as="h2" level={2}>Avec icônes</Heading>
+            <Text variant="small">
+              Les icônes renforcent la lisibilité. Elles sont toujours accompagnées
+              d'un texte visible ou d'un <Text variant="code">aria-label</Text> explicite.
+            </Text>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4 rounded-3xl border border-border-subtle bg-bg-subtle/30 p-6 sm:p-8">
+            <Button variant="primary">
+              <FontAwesomeIcon icon={faPaperPlane} aria-hidden="true" />
+              Envoyer
+            </Button>
+            <Button variant="success">
+              <FontAwesomeIcon icon={faPlus} aria-hidden="true" />
+              Ajouter
+            </Button>
+            <Button variant="danger">
+              <FontAwesomeIcon icon={faTrash} aria-hidden="true" />
+              Supprimer
+            </Button>
+            <Button variant="outline">
+              Suivant
+              <FontAwesomeIcon icon={faArrowRight} aria-hidden="true" />
+            </Button>
+            {/* Icône seule — aria-label obligatoire */}
+            <Button variant="ghost" aria-label="Supprimer l'élément">
+              <FontAwesomeIcon icon={faTrash} aria-hidden="true" />
+            </Button>
+          </div>
+        </section>
+
+        {/* ── SECTION 4 : ÉTATS ── */}
+        <section className="flex flex-col gap-8 border-b pb-12">
+          <div className="space-y-1">
+            <Heading as="h2" level={2}>États</Heading>
+            <Text variant="small">
+              Les états <Text variant="code">disabled</Text> et{' '}
+              <Text variant="code">isLoading</Text> bloquent l'interaction et
+              communiquent l'état aux technologies d'assistance via{' '}
+              <Text variant="code">aria-busy</Text>.
+            </Text>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+
+            {/* Disabled */}
+            <div className="flex flex-col gap-4 rounded-2xl border border-border-subtle bg-bg-surface p-6">
+              <Text variant="caption" className="font-bold text-text-muted">
+                Désactivé — <Text variant="code">disabled</Text>
+              </Text>
+              <div className="flex flex-wrap gap-3">
+                <Button variant="primary" disabled>Primary</Button>
+                <Button variant="secondary" disabled>Secondary</Button>
+                <Button variant="danger" disabled>Danger</Button>
+                <Button variant="outline" disabled>Outline</Button>
+              </div>
+              <Text variant="small" className="text-text-muted">
+                L'attribut natif <Text variant="code">disabled</Text> est appliqué
+                directement sur le <Text variant="code">&lt;button&gt;</Text>,
+                le rendant inatteignable au clavier et à la souris.
+              </Text>
             </div>
-        </div>
-    );
+
+            {/* Loading */}
+            <div className="flex flex-col gap-4 rounded-2xl border border-border-subtle bg-bg-surface p-6">
+              <Text variant="caption" className="font-bold text-text-muted">
+                Chargement — <Text variant="code">isLoading</Text>
+              </Text>
+              <div className="flex flex-wrap gap-3">
+                <Button
+                  variant="primary"
+                  isLoading={isLoading}
+                  onClick={simulateLoading}
+                >
+                  {isLoading ? 'Chargement...' : 'Simuler un chargement'}
+                </Button>
+                <Button variant="outline" isLoading>
+                  En cours...
+                </Button>
+              </div>
+              <Text variant="small" className="text-text-muted">
+                <Text variant="code">aria-busy="true"</Text> est ajouté
+                automatiquement. Le bouton est désactivé pendant le chargement
+                pour éviter les doubles soumissions.
+              </Text>
+            </div>
+
+          </div>
+        </section>
+
+        {/* ── SECTION 5 : FULL WIDTH ── */}
+        <section className="flex flex-col gap-8 border-b pb-12">
+          <div className="space-y-1">
+            <Heading as="h2" level={2}>Pleine largeur</Heading>
+            <Text variant="small">
+              La prop <Text variant="code">fullWidth</Text> étend le bouton
+              à 100% de son conteneur. Utile pour les formulaires mobiles.
+            </Text>
+          </div>
+          <div className="flex flex-col gap-4 rounded-3xl border border-border-subtle bg-bg-subtle/30 p-6 sm:p-8">
+            <Button variant="primary" fullWidth>Connexion</Button>
+            <Button variant="outline" fullWidth>Créer un compte</Button>
+            <Button variant="secondary" fullWidth>Annuler</Button>
+          </div>
+        </section>
+
+        {/* ── SECTION 6 : CAS D'USAGE RÉELS ── */}
+        <section className="flex flex-col gap-8 border-b pb-12">
+          <div className="space-y-1">
+            <Heading as="h2" level={2}>Cas d'usage</Heading>
+            <Text variant="small">
+              Exemples d'assemblages courants dans des interfaces réelles.
+            </Text>
+          </div>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+
+            {/* Formulaire */}
+            <div className="flex flex-col gap-4 rounded-2xl border border-border-subtle bg-bg-surface p-6">
+              <Text variant="caption" className="font-bold text-text-muted">
+                Actions de formulaire
+              </Text>
+              <div className="flex gap-3">
+                <Button variant="primary">Enregistrer</Button>
+                <Button variant="ghost">Annuler</Button>
+              </div>
+            </div>
+
+            {/* Confirmation dangereuse */}
+            <div className="flex flex-col gap-4 rounded-2xl border border-border-subtle bg-bg-surface p-6">
+              <Text variant="caption" className="font-bold text-text-muted">
+                Confirmation dangereuse
+              </Text>
+              <div className="flex gap-3">
+                <Button variant="danger">
+                  <FontAwesomeIcon icon={faTrash} aria-hidden="true" />
+                  Supprimer
+                </Button>
+                <Button variant="outline">Annuler</Button>
+              </div>
+            </div>
+
+            {/* Appel à l'action */}
+            <div className="flex flex-col gap-4 rounded-2xl border border-border-subtle bg-bg-surface p-6">
+              <Text variant="caption" className="font-bold text-text-muted">
+                Appel à l'action
+              </Text>
+              <div className="flex flex-wrap gap-3">
+
+                {/* Navigation externe */}
+                <ButtonLink href="https://github.com/ItsLok0/kore-a11y" variant="primary" size="md" external>
+                    Voir sur GitHub
+                    <FontAwesomeIcon icon={faArrowRight} aria-hidden="true" />
+                </ButtonLink>
+
+                {/* Navigation interne */}
+                <ButtonLink href="/" variant="link" size="md">
+                    Accueil
+                    <FontAwesomeIcon icon={faArrowRight} aria-hidden="true" />
+                </ButtonLink>
+              </div>
+            </div>
+
+            {/* Taille réduite */}
+            <div className="flex flex-col gap-4 rounded-2xl border border-border-subtle bg-bg-surface p-6">
+              <Text variant="caption" className="font-bold text-text-muted">
+                Actions compactes
+              </Text>
+              <div className="flex flex-wrap gap-2">
+                <Button variant="outline" size="sm">Filtrer</Button>
+                <Button variant="outline" size="sm">Exporter</Button>
+                <Button variant="ghost" size="sm">
+                  <FontAwesomeIcon icon={faPlus} aria-hidden="true" />
+                  Ajouter
+                </Button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* ── A11Y ── */}
+        <section className="rounded-2xl border border-border-subtle bg-primary-subtle p-6 sm:p-8">
+          <Heading as="h2" level={4} className="mb-4 italic text-primary">
+            Note accessibilité
+          </Heading>
+          <div className="grid gap-8 md:grid-cols-2">
+            <div className="space-y-2">
+              <Text className="text-sm font-bold underline">Focus visible</Text>
+              <Text variant="small">
+                Chaque bouton affiche un double anneau de focus via{' '}
+                <Text variant="code">--focus-ring</Text> sur{' '}
+                <Text variant="code">focus-visible</Text>, conforme au critère
+                RGAA 10.5. Testable à la touche Tab.
+              </Text>
+            </div>
+            <div className="space-y-2">
+              <Text className="text-sm font-bold underline">États communiqués</Text>
+              <Text variant="small">
+                <Text variant="code">disabled</Text> bloque nativement le focus.{' '}
+                <Text variant="code">aria-busy</Text> annonce le chargement aux
+                lecteurs d'écran sans retirer le focus de l'élément.
+              </Text>
+            </div>
+            <div className="space-y-2">
+              <Text className="text-sm font-bold underline">Icône seule</Text>
+              <Text variant="small">
+                Un bouton sans texte visible exige un{' '}
+                <Text variant="code">aria-label</Text> explicite pour être
+                compréhensible hors contexte visuel — conforme RGAA 11.9.
+              </Text>
+            </div>
+            <div className="space-y-2">
+              <Text className="text-sm font-bold underline">Contraste</Text>
+              <Text variant="small">
+                Tous les variants respectent un ratio minimum de 4.5:1 sur fond
+                blanc et sur <Text variant="code">--color-bg-page</Text>,
+                certifié WCAG AA.
+              </Text>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  );
 }

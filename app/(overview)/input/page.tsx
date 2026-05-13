@@ -105,13 +105,13 @@ export default function InputDemoPage() {
                 </section>
 
                 {/* Note technique commune */}
-                <footer className="mt-6 p-6 bg-primary-subtle rounded-lg border border-border-subtle">
+                <section className="mt-6 p-6 bg-primary-subtle rounded-lg border border-border-subtle">
                     <Text variant="small" className="text-primary-700">
                         <span className='font-bold underline'>Note Accessibilité :</span> Les composants <Text variant="code">Input</Text> et <Text variant="code">TextArea</Text> partagent la même 
                         logique de liaison sémantique. L'utilisation de <Text variant="code">aria-describedby</Text> permet 
                         de notifier dynamiquement l'utilisateur des instructions ou erreurs, quel que soit le type de champ.
                     </Text>
-                </footer>
+                </section>
 
             </div>
         </div>

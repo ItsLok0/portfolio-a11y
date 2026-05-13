@@ -2,7 +2,7 @@
 
 import { useActionState, useRef, useEffect } from 'react';
 import { Input } from '@/app/ui/components/input';
-import { Button } from '@/app/ui/components/button';
+import { Button } from '@/app/ui/components/Button/button';
 import { Heading } from '../components/heading';
 import { Text } from '../components/text';
 import checkEmail from '@/app/actions';

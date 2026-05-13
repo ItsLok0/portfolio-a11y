@@ -1,4 +1,4 @@
-import { Button } from '@/app/ui/components/button';
+import { Button } from '@/app/ui/components/Button/button';
 import { Heading } from '@/app/ui/components/heading';
 import { Text } from '@/app/ui/components/text';
 import { Input } from '@/app/ui/components/input';
@@ -7,6 +7,7 @@ import { TextArea } from './ui/components/textarea';
 import { Checkbox } from './ui/components/checkbox/checkbox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+
 export default function HomePage() {
     return (
         <>

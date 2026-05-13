@@ -134,15 +134,15 @@ export default function TypographyDemoPage() {
                     </div>
                 </section>
 
-                {/* Footer de Page (Note Technique) */}
-                <footer className="p-8 bg-primary-subtle rounded-2xl border border-border-subtle">
+                {/* Note Technique */}
+                <section className="p-8 bg-primary-subtle rounded-2xl border border-border-subtle">
                     <Heading as="h4" level={4} className="mb-4 text-primary">Conformité RGAA (Critère 10.x)</Heading>
                     <Text variant="small">
                         Ce système typographique utilise des unités relatives (rem) pour permettre le redimensionnement du texte par l'utilisateur. 
                         Les composants <strong>Heading</strong> et <strong>Text</strong> séparent strictement la sémantique de la présentation, 
                         permettant une navigation claire pour les lecteurs d'écran (Ticket #4).
                     </Text>
-                </footer>
+                </section>
             </div>
         </div>
     );
