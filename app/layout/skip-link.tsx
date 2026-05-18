@@ -1,10 +1,12 @@
 import { cn } from '@/lib/utils';
+import Link from 'next/dist/client/link';
 
 export  default function SkipLink() {
     return (
         <div className="skipLink">
-            <a
+            <Link
                 href="#main-content"
+                tabIndex={0}
                 className={cn(
                     'sr-only focus:not-sr-only',
                     'bg-primary text-primary-fg! underline',
@@ -12,7 +14,7 @@ export  default function SkipLink() {
                 )}
             >
                 Aller au contenu principal
-            </a>
+            </Link>
         </div>
     );
 }

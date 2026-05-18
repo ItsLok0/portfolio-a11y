@@ -23,6 +23,7 @@ export default function NavLinks() {
                 return (
                     <Link
                         key={link.name}
+                        tabIndex={0}
                         href={link.href}
                         className={cn(
                         'group flex h-12 grow items-center justify-center gap-2 rounded-md bg-bg-surface border-2 border-primary/0 not-focus:border-primary/80 hover:border-primary/0 p-3 text-sm font-medium hover:bg-primary/80 focus:bg-primary/80 md:flex-none md:justify-start md:p-2 md:px-3',

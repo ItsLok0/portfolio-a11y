@@ -1,6 +1,9 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import { forwardRef } from 'react';
 import React from "react";
 
@@ -16,14 +19,16 @@ export type ButtonVariant =
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     isLoading?: boolean;
     variant?: ButtonVariant;
     size?: ButtonSize;
     fullWidth?: boolean;
+    iconRight?: IconDefinition;
+    iconLeft?: IconDefinition;
+    iconOnly?: IconDefinition;
 }
 
-// Création des styles de chaque variante de bouton
 export const variantStyles: Record<ButtonVariant, string> = {
   primary:
     'bg-primary text-primary-fg border border-primary ' +
@@ -61,24 +66,27 @@ export const variantStyles: Record<ButtonVariant, string> = {
     'not-disabled:hover:text-text-link-hover ' +
     'not-disabled:active:opacity-80 ' +
     'h-auto! px-0!',
-}
+};
 
 const sizeStyles: Record<ButtonSize, string> = {
     sm: 'h-8 px-3 text-sm gap-1.5',
     md: 'h-10 px-4 text-base gap-2',
     lg: 'h-12 px-6 text-lg gap-2.5',
-}
+};
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
         children,
         className,
-        isLoading,
+        isLoading = false,
         disabled,
-        variant='primary',
-        size='md',
-        fullWidth=false,
+        variant = 'primary',
+        size = 'md',
+        fullWidth = false,
+        iconLeft,
+        iconRight,
+        iconOnly,
         'aria-label': ariaLabel,
         ...props
     }, ref
@@ -88,26 +96,55 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
         <button
             ref={ref}
+            tabIndex={0}
             disabled={isDisabled}
             aria-busy={isLoading}
-            aria-label={ariaLabel}
+            aria-label={iconOnly ? (ariaLabel || (typeof children === 'string' ? children : undefined)) : ariaLabel}
             className={cn(
-                'inline-flex items-center justify-center',
+                'relative inline-flex items-center justify-center',
                 'font-medium leading-none rounded-md',
-                'select-none whitespace-nowrap',
-                'disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:none',
+                'select-none whitespace-nowrap overflow-hidden',
+                'disabled:opacity-50 disabled:cursor-not-allowed',
                 'focus-visible:outline-none focus-visible:shadow-(--focus-ring)',
-                'not-disabled:active:scale-[0.99]',
+                'not-disabled:active:scale-[0.98]',
                 variantStyles[variant],
                 sizeStyles[size],
                 fullWidth && 'w-full',
+                iconOnly && 'aspect-square px-0',
                 className,
             )}
             {...props}
         >
-            <span className={cn(isLoading && 'opacity-80')}>
-                {children}
+            <span 
+              className={cn(
+                'flex items-center justify-center gap-[inherit]',
+                isLoading ? 'opacity-0' : 'opacity-100'
+              )}
+            >
+              {iconOnly ? (
+                <FontAwesomeIcon icon={iconOnly} className="w-[1.1em] h-[1.1em]" aria-hidden="true" />
+              ) : (
+                <>
+                  {iconLeft && (
+                    <FontAwesomeIcon icon={iconLeft} className="w-[1em] h-[1em]" aria-hidden="true" />
+                  )}
+                  {children}
+                  {iconRight && (
+                    <FontAwesomeIcon icon={iconRight} className="w-[1em] h-[1em]" aria-hidden="true" />
+                  )}
+                </>
+              )}
             </span>
+
+            {/* Spinner Overlay */}
+            {isLoading && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <FontAwesomeIcon 
+                  icon={faCircleNotch} 
+                  className="animate-spin w-[1.2em] h-[1.2em]" 
+                />
+              </div>
+            )}
         </button>
     );
   }

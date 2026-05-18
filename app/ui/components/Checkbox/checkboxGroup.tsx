@@ -95,10 +95,11 @@ export const CheckboxGroup = forwardRef<HTMLFieldSetElement, CheckboxGroupProps>
               <div className="flex items-center h-6">
                 <input
                   type="checkbox"
+                  tabIndex={0}
                   name={name}
                   value={option.value}
                   className={cn(
-                    "rounded border-slate-300 text-blue-600 focus:ring-blue-600 transition-colors",
+                    "rounded border-border-subtle text-primary focus-visible:outline-none focus-visible:shadow-(--focus-ring) cursor-pointer",
                     inputSizeStyles[size],
                     error && "border-danger"
                   )}

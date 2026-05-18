@@ -110,14 +110,19 @@
   }
   
   input[type="date"] {
-    -webkit-appearance: none;
-    appearance: none;
-    box-sizing: border-box; /* Évite que le padding n'agrandisse l'élément */
-    width: 100%; /* Ou la largeur souhaitée */
+    box-sizing: border-box;
+    width: 100%;
     max-width: 100%;
     font-family: inherit;
-    font-size: 16px; /* Empêche le zoom auto sur iOS */
+    font-size: 16px;
     vertical-align: middle;
+  }
+
+  @supports (-webkit-hyphens:none) {
+    input[type="checkbox"]:focus-visible {
+      outline: 2px solid var(--color-primary) !important;
+      outline-offset: 2px;
+    }
   }
 }
 
@@ -157,7 +162,6 @@
     &.error {
       box-shadow: var(--focus-ring-error);
     }
-    
   }
 
   input:read-only, Textarea:read-only {

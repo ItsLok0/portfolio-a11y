@@ -78,26 +78,20 @@ export default function ButtonDemoPage() {
             </Text>
           </div>
           <div className="flex flex-wrap justify-center gap-4 rounded-3xl border border-border-subtle bg-bg-subtle/30 p-6 sm:p-8">
-            <Button variant="primary">
-              <FontAwesomeIcon icon={faPaperPlane} aria-hidden="true" />
+            <Button variant="primary" iconLeft={faPaperPlane}>
               Envoyer
             </Button>
-            <Button variant="success">
-              <FontAwesomeIcon icon={faPlus} aria-hidden="true" />
+            <Button variant="success" iconLeft={faPlus}>
               Ajouter
             </Button>
-            <Button variant="danger">
-              <FontAwesomeIcon icon={faTrash} aria-hidden="true" />
+            <Button variant="danger" iconLeft={faTrash}>
               Supprimer
             </Button>
-            <Button variant="outline">
+            <Button variant="outline" iconRight={faArrowRight}>
               Suivant
-              <FontAwesomeIcon icon={faArrowRight} aria-hidden="true" />
             </Button>
             {/* Icône seule — aria-label obligatoire */}
-            <Button variant="ghost" aria-label="Supprimer l'élément">
-              <FontAwesomeIcon icon={faTrash} aria-hidden="true" />
-            </Button>
+            <Button variant="ghost" aria-label="Supprimer l'élément" iconOnly={faTrash} />
           </div>
         </section>
 
@@ -182,8 +176,7 @@ export default function ButtonDemoPage() {
                 Confirmation dangereuse
               </Text>
               <div className="flex gap-3">
-                <Button variant="danger">
-                  <FontAwesomeIcon icon={faTrash} aria-hidden="true" />
+                <Button variant="danger" iconRight={faTrash}>
                   Supprimer
                 </Button>
                 <Button variant="outline">Annuler</Button>

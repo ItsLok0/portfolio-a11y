@@ -64,8 +64,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                             ref={ref}
                             type="checkbox"
                             required={required}
+                            tabIndex={0}
                             className={cn(
-                                "rounded border-slate-300 text-blue-600 focus:ring-blue-600 transition-colors cursor-pointer",
+                                "rounded border-border-subtle text-primary focus-visible:outline-none focus-visible:shadow-(--focus-ring) cursor-pointer",
                                 inputSizeStyles[size],
                                 error && "border-danger"
                             )}
@@ -79,9 +80,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                         <Text
                             as="span"
                             className={cn(
-                                "font-medium leading-6 group-hover:text-blue-600 transition-colors",
+                                "font-medium leading-6 group-hover:text-primary transition-colors",
                                 labelSizeStyles[size],
-                                error ? "text-danger" : "text-slate-900"
+                                error ? "text-danger" : "text-text-primary"
                             )}
                         >
                             {label}
@@ -94,7 +95,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                             <Text 
                                 id={descId} 
                                 as="span"
-                                className="text-sm text-slate-500 leading-5"
+                                className="text-sm text-text-secondary leading-5"
                             >
                                 {description}
                             </Text>

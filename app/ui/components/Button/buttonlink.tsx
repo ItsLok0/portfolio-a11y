@@ -48,6 +48,7 @@ export const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     return (
       <Link
         ref={ref}
+        tabIndex={0}
         href={href}
         className={cn(
             baseStyles,
